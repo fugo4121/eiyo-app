@@ -1,0 +1,116 @@
+@startuml EntityRelationship
+
+package "MySQL" as target_system <<Database>> {
+
+    ' ユーザーテーブル
+    entity "ユーザー" as users {
+        + ユーザーID (user_id) [PK]
+        --
+        苗字             (last_name)
+        名前             (first_name)
+        苗字カナ          (last_name_kana)
+        名前カナ          (first_name_kana)
+        Eメール           (e_mail)
+        パスワード         (password)
+        性別              (gender_id)
+        身長              (height)
+        生年月日           (birthday)
+       }
+
+    ' 健康管理テーブル
+    entity "健康管理" as healths {
+        + 健康管理ID       (health_id) [PK]
+        --
+        メモ               (memo)
+        睡眠時間            (sleep_time)
+        運動量(消費kcal)    (kcal_burn)
+        記録日              (recording_date)
+        ユーザーID          (user_id) [PK]
+       }
+
+    ' 食事テーブル  食事フラグ => 1:朝食 2:昼食 3:夕食 4:間食
+    entity "食事" as eats {
+        + 食事ID           (eat_id) [PK]
+        --
+        食事フラグ          (eat_flg)
+        個数               (num)
+        健康管理ID          (health_id) [PK]
+        料理ID             (food_id) [PK]
+       }
+
+    ' 料理テーブル
+    entity "料理" as foods {
+        + 料理ID            (food_id) [PK]
+        --
+          料理名            (food_name)
+          説明              (explain)
+          カロリー           (kcal) 
+          たんぱく質         (protein) 
+          脂質              (lipid) 
+          炭水化物           (carb) 
+          カルシウム         (calcium) 
+          鉄                (iron) 
+          ビタミンA          (vitamin_a) 
+          ビタミンB1         (vitamin_b1) 
+          ビタミンB2         (vitamin_b2) 
+          ビタミンC          (vitamin_c) 
+          ビタミンE          (vitamin_e) 
+          食物繊維           (fiber) 
+          塩分               (salt) 
+    }
+
+    users   ||..o{ healths
+    healths ||..o{ eats
+    eats    }o..|| foods
+
+}
+
+@enduml
+
+    ' ' 朝食テーブル
+    ' entity "朝食" as breakfasts {
+    '     + 朝食ID          (breakfast_id) [PK]
+    '     --
+    '     健康管理ID         (health_id) [PK]
+    '     料理ID            (food_id) [PK]
+    '     個数              (num)
+    '    }
+
+    ' ' 昼食テーブル
+    ' entity "昼食" as lunchs {
+    '     + 昼食ID          (lunch_id) [PK]
+    '     --
+    '     健康管理ID         (health_id) [PK]
+    '     料理ID            (food_id) [PK]
+    '     個数              (num)
+    '    }
+
+    ' ' 夕食テーブル
+    ' entity "夕食" as dinners {
+    '     + 夕食ID          (dinner_id) [PK]
+    '     --
+    '     健康管理ID         (health_id) [PK]
+    '     料理ID            (food_id) [PK]
+    '     個数              (num)
+    '    }
+
+    ' ' 間食テーブル
+    ' entity "間食" as snacks {
+    '     + 間食ID          (snack_id) [PK]
+    '     --
+    '     健康管理ID         (health_id) [PK]
+    '     料理ID            (food_id) [PK]
+    '     個数              (num)
+    '    }
+
+
+    ' healths ||..o{ breakfasts
+    ' healths ||..o{ lunchs
+    ' healths ||..o{ dinners
+    ' healths ||..o{ snacks
+
+    ' breakfasts }o..|| foods
+    ' lunchs     }o..|| foods
+    ' dinners    }o..|| foods
+    ' snacks     }o..|| foods
+

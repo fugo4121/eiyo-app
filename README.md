@@ -1,24 +1,71 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## ユーザー(user) テーブル
 
-Things you may want to cover:
+| Column             | Type        | Options                         |
+| ------             | ----------  | ------------------------------- |
+| last_name          | string      | null: false                     |
+| first_name         | string      | null: false                     |
+| last_name_kana     | string      | null: false                     |
+| first_name_kana    | string      | null: false                     |
+| email              | string      | null: false                     |
+| password           | string      | null: false                     |
+| gender_id          | integer     | null: false                     |
+| height             | integer     | null: false                     |
+| birthday           | date        | null: false                     |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :healths
 
-* Configuration
+## 健康管理(health) テーブル
 
-* Database creation
+| Column                | Type        | Options                         |
+| ------                | ----------  | ------------------------------- |
+| recording_date        | date        | null: false                     |
+| sleep_time            | date        |                                 |
+| kcal_burn             | integer     |                                 |
+| memo                  | text        |                                 |
+| user                  | references  | null: false, foreign_key: true  |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
+- has_many   :eats
 
-* Services (job queues, cache servers, search engines, etc.)
+## 食事(eat) テーブル
 
-* Deployment instructions
+| Column                | Type        | Options                         |
+| ------                | ----------  | ------------------------------- |
+| eat_flg               | integer     | null: false                     |
+| num                   | integer     | null: false                     |
+| health                | references  | null: false, foreign_key: true  |
+| food                  | references  | null: false, foreign_key: true  |
 
-* ...
+### Association
+
+- belongs_to :health
+- belongs_to :food
+
+## 料理(food) テーブル
+
+| Column             | Type         | Options                         |
+| ------             | ----------   | ------------------------------- |
+| food_name          | string       | null: false                     |
+| explain            | string       | null: false                     |
+| kcal               | integer      | null: false                     |
+| protein            | integer      | null: false                     |
+| lipid              | integer      | null: false                     |
+| carb               | integer      | null: false                     |
+| calcium            | integer      | null: false                     |
+| vitamin_a          | integer      | null: false                     |
+| vitamin_b1         | integer      | null: false                     |
+| vitamin_b2         | integer      | null: false                     |
+| vitamin_c          | integer      | null: false                     |
+| vitamin_e          | integer      | null: false                     |
+| fiber              | integer      | null: false                     |
+| salt               | integer      | null: false                     |
+
+### Association
+
+- has_many   :foods
