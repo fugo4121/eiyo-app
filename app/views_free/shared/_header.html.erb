@@ -1,0 +1,35 @@
+<%# CSS・・・assets/stylesheets/shared/header.css %>
+<%# トップページのヘッダー %>
+<header class='top-page-header'>
+  <%# 検索 %>
+  <div class='search-bar-contents'>
+    <%# フリマのロゴ %>
+    <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
+    <%# 検索フォーム %>
+    <form class="search-form" action="#">
+      <input class='input-box' placeholder='キーワードから探す'>
+      <button class="search-button">
+        <%= image_tag "search.png", class:"search-icon" %>
+      </button>
+    </form>
+  </div>
+  <%# リスト一覧 %>
+  <div class='nav'>
+    <%# 左側のリスト %>
+    <ul class='lists-left'>
+      <li><%= link_to 'カテゴリー', "#", class: "category-list" %></li>
+      <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
+    </ul>
+    <%# 右側のリスト %>
+    <ul class='lists-right'>
+      <% if user_signed_in? %>
+        <%# ユーザー情報編集 %>
+        <li><%= link_to current_user.last_name, edit_user_path(current_user.id), method: :get, class: "user-nickname" %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+      <% else %>
+        <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+        <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+      <% end %>
+    </ul>
+  </div>
+</header>
