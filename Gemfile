@@ -30,16 +30,24 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  # 単体テスト実行用
+  gem 'rspec-rails'
+  # テスト用データ作成
+  gem 'factory_bot_rails'
+  # ダミーデータ作成
+  gem 'faker'
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # コーディング矯正用
+  gem 'rubocop', require: false
 end
 
 group :test do
@@ -51,4 +59,33 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+# ログの保存先をHeroku用に微調整 本番用
+group :production do
+  gem 'rails_12factor'
+end
+
+# モデル内でテーブル実装
+gem 'active_hash'
+
+# エラーメッセージを日本語で表示
+gem 'rails-i18n'
+
+# ダミーデータを日本語で作成
+gem 'gimei'
+
+# デバッグ用
+gem 'pry-rails'
+
+# ユーザー管理機能
+gem 'devise'
+
+# 画像加工用
+gem 'mini_magick'
+
+# 画像サイズ調整用
+gem 'image_processing', '~> 1.2'
+
+# payjp
+gem 'payjp'
