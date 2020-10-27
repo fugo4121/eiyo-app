@@ -30,8 +30,9 @@
 
 .buy-item-img {
   margin-right: 20px;
-  height: 130px;
-  width: 250px;
+  margin-left: 20px;
+  height: 50px;
+  width: 50px;
   object-fit: contain;
 }
 
