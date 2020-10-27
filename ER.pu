@@ -20,7 +20,7 @@ package "MySQL" as target_system <<Database>> {
         --
         メモ               (memo)
         睡眠時間            (sleep_time)
-        運動量(消費kcal)    (kcal_burn)
+        運動量(消費kcal)    (burn_kcal)
         記録日              (recording_date)
         ユーザーID          (user_id) [PK]
        }
