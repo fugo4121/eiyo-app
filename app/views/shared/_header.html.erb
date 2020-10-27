@@ -17,18 +17,23 @@
   <div class='nav'>
     <%# 左側のリスト %>
     <ul class='lists-left'>
-      <li><%= link_to 'カテゴリー', "#", class: "category-list" %></li>
-      <li><%= link_to 'ブランド', "#", class: "brand-list" %></li>
     </ul>
     <%# 右側のリスト %>
     <ul class='lists-right'>
       <% if user_signed_in? %>
         <%# ユーザー情報編集 %>
-        <li><%= link_to current_user.last_name, edit_user_path(current_user.id), method: :get, class: "user-nickname" %></li>
+        <%# 画像は、ログイン状態かつ登録している時に表示。それ以外はフラッグを表示 %>
+        <li><%= link_to current_user.name, edit_user_path(current_user.id), method: :get, class: "user-nickname" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+          <% if current_user.image.attached? %>
+            <li><%= image_tag current_user.image, class: 'buy-item-img' %></li>
+          <% else %>
+            <li><%= image_tag "flag.png", class: 'buy-item-img' %></li>
+          <% end %>
       <% else %>
         <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
         <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+        <li><%= image_tag "flag.png", class: 'buy-item-img' %></li>
       <% end %>
     </ul>
   </div>
