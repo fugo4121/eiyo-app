@@ -20,7 +20,7 @@
 | Column                | Type        | Options                         |
 | ------                | ----------  | ------------------------------- |
 | recording_date        | date        | null: false                     |
-| sleep_time            | integer     |                                 |
+| sleep_time_id         | integer     |                                 |
 | burn_kcal             | integer     |                                 |
 | memo                  | text        |                                 |
 | user                  | references  | null: false, foreign_key: true  |

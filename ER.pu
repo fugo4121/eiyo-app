@@ -19,7 +19,7 @@ package "MySQL" as target_system <<Database>> {
         + 健康管理ID       (health_id) [PK]
         --
         メモ               (memo)
-        睡眠時間            (sleep_time)
+        睡眠時間            (sleep_time_id)
         運動量(消費kcal)    (burn_kcal)
         記録日              (recording_date)
         ユーザーID          (user_id) [PK]
