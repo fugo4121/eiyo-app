@@ -89,3 +89,6 @@ gem 'image_processing', '~> 1.2'
 
 # payjp
 gem 'payjp'
+
+# javascriptに変数代入
+gem 'gon'

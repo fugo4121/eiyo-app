@@ -1,6 +1,5 @@
 <%# ヘッダー呼び出し %>
 <%= render "shared/second-header"%>
-
     <%= form_with(model: @health, local: true) do |f| %>
       <div class='form-wrap'>
       <h3>記録する</h3>
@@ -12,13 +11,13 @@
               <span class="indispensable">必須</span>
           </div>
           <div class='input-text-wrap'>
-            <%= f.collection_select(:sleep_time_id, SleepTime.all, :id, :time, {}, {class:"input-name", id:"gender"}) %>
+            <%= f.collection_select(:sleep_time_id, SleepTime.all, :id, :time, {}, {class:"input-name", id:"sleep-time"}) %>
           </div>
           <%# 睡眠時間による消費カロリー %>
           <div class="price-content">
           <label class="form-text">睡眠の消費カロリー</label>
             <span>
-              <span id='sleep-kcal'>33</span> kcal
+              <span id='sleep-kcal'>0</span> kcal
             </span>
           </div>
         </div>  
@@ -29,7 +28,7 @@
               <span class="indispensable">必須</span>
           </div>
           <div class='input-name-wrap'>
-            <%= f.text_field :burn_kcal, class:"input-default", placeholder: "300" %>
+            <%= f.text_field :burn_kcal, class:"input-default", placeholder: "300", id:'burn-kcal' %>
             <div class='form-text-wrap'>
               <label class="form-text">kcal</label>
             </div>
@@ -57,7 +56,7 @@
                         f.date_select(
                           :recording_date,
                           class:'select-birth',
-                          id:"birth-date",
+                          id:"recording-date",
                           use_month_numbers: true,
                           prompt:'--',
                           start_year: (Time.now.year - 1),
