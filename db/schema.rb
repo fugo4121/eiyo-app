@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 2020_10_27_161110) do
   create_table "healths", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "sleep_time_id", null: false
     t.integer "burn_kcal", null: false
-    t.text "memo", null: false
-    t.date "recording_date", null: false
+    t.text "memo"
+    t.datetime "start_time", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

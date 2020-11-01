@@ -1,9 +1,11 @@
 class HealthsController < ApplicationController
   def index
   end
-  
+
   def new
     @health = Health.new
+    # カレンダーに内容を反映
+    @healths = Health.all
     # sleep_timeモデルから、kcalカラムのみ取得
     gon.sleep_kcal = SleepTime.pluck(:kcal)
   end
@@ -22,6 +24,6 @@ end
 private
 
 def health_params
-  params.require(:health).permit(:recording_date, :memo, :sleep_time_id, :burn_kcal).merge(user_id: current_user.id)
+  params.require(:health).permit(:sleep_time_id, :burn_kcal, :memo, :start_time).merge(user_id: current_user.id)
 end
 

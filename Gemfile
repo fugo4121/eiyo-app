@@ -92,3 +92,6 @@ gem 'payjp'
 
 # javascriptに変数代入
 gem 'gon'
+
+# カレンダー導入
+gem 'simple_calendar', '~> 2.0'

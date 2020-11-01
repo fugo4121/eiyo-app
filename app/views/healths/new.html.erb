@@ -1,78 +1,99 @@
-<%# ヘッダー呼び出し %>
+<%# --- ヘッダー呼び出し ----------------------------------------------- %>
 <%= render "shared/second-header"%>
-    <%= form_with(model: @health, local: true) do |f| %>
-      <div class='form-wrap'>
-      <h3>記録する</h3>
-<%# _form.html.erbファイルから呼び出し %>
-        <%# 睡眠時間 %>
-        <div class="form-group">
-          <div class='form-text-wrap'>
-              <label class="form-text">睡眠時間</label>
-              <span class="indispensable">必須</span>
-          </div>
-          <div class='input-text-wrap'>
-            <%= f.collection_select(:sleep_time_id, SleepTime.all, :id, :time, {}, {class:"input-name", id:"sleep-time"}) %>
-          </div>
-          <%# 睡眠時間による消費カロリー %>
-          <div class="price-content">
-          <label class="form-text">睡眠の消費カロリー</label>
-            <span>
-              <span id='sleep-kcal'>0</span> kcal
-            </span>
-          </div>
-        </div>  
-        <%# 消費カロリー %>
-        <div class="form-group">
-          <div class='form-text-wrap'>
-              <label class="form-text">消費カロリー(運動量)</label>
-              <span class="indispensable">必須</span>
-          </div>
-          <div class='input-name-wrap'>
-            <%= f.text_field :burn_kcal, class:"input-default", placeholder: "300", id:'burn-kcal' %>
-            <div class='form-text-wrap'>
-              <label class="form-text">kcal</label>
-            </div>
-          </div>
-        </div>
-        <%# メモ %>
-        <div class="form-group">
-          <div class='form-text-wrap'>
-              <label class="form-text">メモ</label>
-              <span class="indispensable">任意</span>
-          </div>
-          <div class='input-name-wrap'>
-              <%= f.text_area :memo, class:"input-default", placeholder: "メモ", rows: "10" %>
-          </div>
-        </div>
-        
-        <%# 記録日 %>
-        <div class="form-group">
-          <div class='form-text-wrap'>
-            <label class="form-text">記録日</label>
-            <span class="indispensable">必須</span>
-          </div>
-          <div class='input-birth-wrap'>
-              <%= raw sprintf(
-                        f.date_select(
-                          :recording_date,
-                          class:'select-birth',
-                          id:"recording-date",
-                          use_month_numbers: true,
-                          prompt:'--',
-                          start_year: (Time.now.year - 1),
-                          end_year: (Time.now.year),
-                          selected: Date.today,
-                          date_separator: '%s'),
-                        "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
-          </div>
-        </div>
+<%# --- ヘッダー呼び出し ----------------------------------------------- %>
 
-        <div class='register-btn'>
-          <%= f.submit "記録する" ,class:"register-red-btn" %>
+<%= form_with(model: @health, local: true) do |f| %>
+  <div class='form-wrap'>
+    <h3>記録する</h3>
+<%# _form.html.erbファイルから呼び出し %>
+    <%# --- 睡眠時間 ------------------------------------------------------ %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">睡眠時間</label>
+          <span class="indispensable">必須</span>
+      </div>
+      <div class='input-text-wrap'>
+        <%= f.collection_select(:sleep_time_id, SleepTime.all, :id, :time, {}, {class:"input-name", id:"sleep-time"}) %>
+      </div>
+      <%# 睡眠時間による消費カロリー %>
+      <div class="price-content">
+      <label class="form-text">睡眠の消費カロリー</label>
+        <span>
+          <span id='sleep-kcal'>0</span> kcal
+        </span>
+      </div>
+    </div>
+    <%# --- 睡眠時間 ------------------------------------------------------ %>
+    <%# --- 消費カロリー --------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">消費カロリー(運動量)</label>
+          <span class="indispensable">必須</span>
+      </div>
+      <div class='input-name-wrap'>
+        <%= f.text_field :burn_kcal, class:"input-default", placeholder: "300", id:'burn-kcal' %>
+        <div class='form-text-wrap'>
+          <label class="form-text">kcal</label>
         </div>
-       </div>
-       </div> 
-    <% end %>
+      </div>
+    </div>
+    <%# --- 消費カロリー --------------------------------------------------- %>
+    <%# --- メモ ---------------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">メモ</label>
+          <span class="indispensable">任意</span>
+      </div>
+      <div class='input-name-wrap'>
+          <%= f.text_area :memo, class:"input-default", placeholder: "メモ", rows: "10" %>
+      </div>
+    </div>
+    <%# --- メモ ---------------------------------------------------------- %>
+    <%# --- 記録日 -------------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">記録日</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <div class='input-birth-wrap'>
+          <%= raw sprintf(
+                    f.date_select(
+                      :start_time,
+                      class:'select-birth',
+                      id:"recording-date",
+                      use_month_numbers: true,
+                      prompt:'--',
+                      start_year: (Time.now.year - 1),
+                      end_year: (Time.now.year),
+                      selected: Date.today,
+                      date_separator: '%s'),
+                    "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+      </div>
+    </div>
+    <%# --- 記録日 -------------------------------------------------------- %> 
+
+    <div class='register-btn'>
+      <%= f.submit "記録する" ,class:"register-red-btn" %>
+    </div>
+<%# --- カレンダー ----------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <%# コントローラーのnewアクションで取得したテーブル情報を反映 %>
+        <%= month_calendar events: @healths do |date, healths| %>
+          <%# カレンダーの日付表示 %>
+          <%= date.day %>
+          <%# start_timeの登録データがある時だけ表示 %>
+          <% healths.each do |health| %>
+            <div>
+              <%= "登録済" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+<%# --- カレンダー ----------------------------------------------------- %>
+  </div> 
+<% end %>
 
 
 
