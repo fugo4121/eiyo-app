@@ -9,6 +9,8 @@ class Health < ApplicationRecord
   end
 
   with_options presence: true do
+    # 体重空白不可
+    validates :weight
     # 消費カロリー空白不可
     validates :burn_kcal
     # 記録日空白不可、重複不可、他ユーザーとの重複はOK
@@ -19,5 +21,5 @@ class Health < ApplicationRecord
   def date_after_start
     errors.add(:start_time, "は未来の日付を選択できません") if start_time > Date.today
   end
-  
+
 end

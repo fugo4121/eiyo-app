@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2020_10_27_161110) do
   end
 
   create_table "healths", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "weight", null: false
     t.integer "sleep_time_id", null: false
     t.integer "burn_kcal", null: false
     t.text "memo"

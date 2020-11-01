@@ -16,6 +16,19 @@
         <%= render 'shared/error_messages', model: f.object %>
       </div>
     </div>
+    <%# --- 体重 --------------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">体重</label>
+          <span class="indispensable">必須</span>
+      </div>
+      <div class='input-name-wrap'>
+        <%= f.text_field :weight, class:"input-default", placeholder: "60", id:'weight' %>
+        <div class='form-text-wrap'>
+          <label class="form-text">kg</label>
+        </div>
+      </div>
+    </div>
     <%# --- 睡眠時間 ------------------------------------------------------ %>
     <div class="form-group">
       <div class='form-text-wrap'>
