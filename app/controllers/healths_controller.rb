@@ -11,6 +11,8 @@ class HealthsController < ApplicationController
   end
 
   def create
+    # カレンダーに内容を反映
+    @healths = Health.all
     @health = Health.new(health_params)
 
     if @health.save
