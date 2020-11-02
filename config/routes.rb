@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   root 'healths#index'
 
   resources :healths
-  resources :users, only: %i[edit update]
+  resources :users, only: [:edit, :update]
 end

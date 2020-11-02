@@ -19,10 +19,11 @@
 
 | Column                | Type        | Options                         |
 | ------                | ----------  | ------------------------------- |
-| recording_date        | date        | null: false                     |
-| sleep_time            | date        |                                 |
-| kcal_burn             | integer     |                                 |
+| weight                | integer     | null: false                     |
+| sleep_time_id         | integer     |                                 |
+| burn_kcal             | integer     |                                 |
 | memo                  | text        |                                 |
+| start_time            | datetime    | null: false                     |
 | user                  | references  | null: false, foreign_key: true  |
 
 ### Association

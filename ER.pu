@@ -18,10 +18,11 @@ package "MySQL" as target_system <<Database>> {
     entity "健康管理" as healths {
         + 健康管理ID       (health_id) [PK]
         --
+        体重               (weight)
         メモ               (memo)
-        睡眠時間            (sleep_time)
-        運動量(消費kcal)    (kcal_burn)
-        記録日              (recording_date)
+        睡眠時間            (sleep_time_id)
+        運動量(消費kcal)    (burn_kcal)
+        記録日              (start_time)
         ユーザーID          (user_id) [PK]
        }
 

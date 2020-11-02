@@ -8,16 +8,19 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     attributes:
       user:
-        last_name: "苗字"
-        first_name: "名前"
-        last_name_kana: "苗字(カナ)"
-        first_name_kana: "名前(カナ)"
+        name: "名前"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "パスワード確認用"
         gender_id: "性別"
         height: "身長"
         birthday: "生年月日"
+      health:
+        weight: "体重"
+        sleep_time_id: "睡眠時間"
+        burn_kcal: "消費カロリー"
+        memo: "メモ"
+        start_time: "記録日"
   date:
     abbr_day_names:
     - 日

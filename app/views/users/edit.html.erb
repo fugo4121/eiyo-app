@@ -55,7 +55,7 @@
       </div>
       <div class='input-name-wrap'>
         <%= f.collection_select(:gender_id, Gender.all, :id, :name, {}, {class:"input-name", id:"gender"}) %>
-        <%= f.text_area :height, class:"input-name", id:"height", placeholder:"170" %>
+        <%= f.text_field :height, class:"input-name", id:"height", placeholder:"170" %>
       </div>
     </div>
     <%# 生年月日 フォーム %>
