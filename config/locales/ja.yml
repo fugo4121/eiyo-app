@@ -19,6 +19,7 @@ ja:
         weight: "体重"
         sleep_time_id: "睡眠時間"
         burn_kcal: "消費カロリー"
+        intake_kcal: "摂取カロリー"
         memo: "メモ"
         start_time: "記録日"
   date:
