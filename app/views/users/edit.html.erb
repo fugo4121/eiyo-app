@@ -47,15 +47,26 @@
       </div>
       <%= f.email_field :email, class:"input-default", id:"email", placeholder:"PC・携帯どちらでも可", autofocus: true %>
     </div>
-    <%# 性別・身長 フォーム %>
+    <%# 性別 %>
     <div class="form-group">
       <div class='form-text-wrap'>
-        <label class="form-text">性別・身長(cm)</label>
+        <label class="form-text">性別</label>
         <span class="indispensable">必須</span>
       </div>
       <div class='input-name-wrap'>
-        <%= f.collection_select(:gender_id, Gender.all, :id, :name, {}, {class:"input-name", id:"gender"}) %>
-        <%= f.text_field :height, class:"input-name", id:"height", placeholder:"170" %>
+          <label class="input-name"> <%= f.radio_button :gender_id, 1, checked: true %>男性</label>
+          <label class="input-name"> <%= f.radio_button :gender_id, 2 %>女性</label>
+          <label class="input-name"> <%= f.radio_button :gender_id, 3 %>その他</label>
+      </div>
+    </div>
+    <%# 身長 フォーム %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">身長(cm)</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <div class='input-name-wrap'>
+        <%= f.text_field :height, class:"input-default", id:"height", placeholder:"170" %>
       </div>
     </div>
     <%# 生年月日 フォーム %>
