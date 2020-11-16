@@ -1,0 +1,173 @@
+
+/* トップページ（ログイン前） */
+
+//--- ヘッダー -----------------------
+header {
+  img {
+    margin-left: 30px;
+    margin-top: 10px;
+  }
+  ul {
+    float: right;
+    li {
+      float: left;
+      margin-top: 30px;
+      a {
+        font-size: 20px;
+        font-weight: bold;
+        margin-right: 30px;
+        display: inline-block;
+        text-decoration: none;
+        color: #039924;
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+
+
+//--- 全体枠(画像あり) -----------------------
+.main {
+  width: 100%;
+  height: 800px;
+  background-image: image-url("main.jpg");
+  background-size: cover;
+  background-color:rgba(124, 49, 49, 0.6);
+  background-blend-mode:lighten;
+}
+
+// 左寄せ、または右寄せされた全ての要素に対する回り込みを解除 ----------------
+.cf {
+  clear: both;
+}
+
+// タイトル・説明 -----------------------------------------------------
+.description {
+  width: 500px;
+  height: auto;
+  text-align: center;
+  margin-top: 330px;
+  color: white;
+  float: right;
+  h1 {
+    font-weight: bold;
+    opacity: 0.8;
+  }
+  p {
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 0.8;
+  }
+}
+
+// ゲストログイン ---------------------------------------------
+.gest {
+  // ユーザー ------------------------------------
+  .gest_login {
+    padding: 8px 13px;
+    float: right;
+    margin-right: 50px;
+    margin-top: 10px;
+  }
+  a {
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+  }
+  // 管理者 ----------------------------------------
+  .admin_login {
+    padding: 8px 13px;
+    float: right;
+    margin-right: 10px;
+    margin-top: 10px;
+    a {
+      font-size: 13px;
+      color: white;
+      font-weight: bold;
+      display: inline-block;
+    }
+  }
+}
+
+// サブタイトル ------------------------------------
+.sub_content {
+  width: 100%;
+  height: auto;
+  background-color: #33CC99;
+  opacity: 0.7;
+  margin-top: 0px;
+  text-align: center;
+  h2 {
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 45px;
+  }
+  p {
+    padding-bottom: 5px;
+  }
+  img {
+    width: 300x;
+    height: 270px;
+    border-radius: 50%;
+  }
+}
+
+
+
+
+// -------------------------
+
+
+// @media(max-width: 1000px) {
+//   .main {
+//     height: 1000px;
+//     header {
+//       img {
+//         width: 350px;
+//         height: 100px;
+//       }
+//       a {
+//         font-size: 40px;
+//         padding-top: 10px;
+//       }
+//     }
+//     .description {
+//       padding-top: 125px;
+//       h1 {
+//         font-size: 40px;
+//       }
+//       p {
+//         font-size: 25px;
+//       }
+//     }
+//     a.gest_login {
+//       font-size: 18px;
+//       margin-right: 5px;
+//       padding-top: 15px;
+//       padding-bottom: 15px;
+//     }
+//     a.admin_login {
+//       font-size: 18px;
+//       padding-top: 15px;
+//       padding-bottom: 15px;
+//     }
+//   }
+// }
+// @media (max-width: 1000px) {
+//   .sub_content {
+//     h2 {
+//       font-size: 50px;
+//     }
+//     h3 {
+//       font-size: 40px;
+//     }
+//     h4 {
+//       font-size: 30px;
+//     }
+//     p {
+//       font-size: 25px;
+//     }
+//   }
+// }
+

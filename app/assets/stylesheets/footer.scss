@@ -1,0 +1,36 @@
+
+footer {
+  height: auto;
+  width: 100%;
+  ul.flex-list {
+    display: flex;
+    flex-wrap: wrap;
+    li.flex_item {
+      flex: auto;
+      width: 13%;
+    }
+    a {
+      text-align: center;
+      display: block;
+    }
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+
+footer.home {
+  background-color: #e5ebe0;
+  height: 100px;
+  width: 100%;
+  p {
+    display: block;
+    line-height: 100px;
+    text-align: center;
+    color: black;
+    opacity: 0.6;
+  }
+}
+
