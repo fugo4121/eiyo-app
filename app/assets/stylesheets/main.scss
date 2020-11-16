@@ -1,3 +1,4 @@
+// メインページ全体
 .main_page {
   width: 100%;
   .bar {
@@ -12,20 +13,24 @@
       height: 70px;
     }
   }
+  
+  // メイン画像
   .main_image {
     width: 100%;
-    height: 750px;
+    height: 450px;
     // ヘッダーまで寄せる
     // margin-top: -250px;
     background-image: url("science.png");
     background-size: cover;
     background-color:rgba(124, 49, 49, 0.6);
     background-blend-mode:lighten;
+
+    // メインタイトル
     .main_comment {
       color: white;
       opacity: 0.8;
       font-weight: bold;
-      padding-top: 500px;
+      padding-top: 200px;
       padding-left: 50px;
       h1 {
         font-size: 60px;
