@@ -1,5 +1,5 @@
 <%# ヘッダー呼び出し %>
-<%= render "shared/second-header"%>
+<%= render "shared/logon-header"%>
 
 <%# ユーザー登録(new_user_registration_path)より情報を渡して、ユーザー作成(user_registration_path)する %>
 <%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
@@ -26,7 +26,7 @@
         <p>
           クリックしてファイルをアップロード
         </p>
-        <%= f.file_field :image, id:"item-image" %>
+        <%= f.file_field :image, id:"user-image", class: "img-choose" %>
       </div>
     </div>
     <%# ユーザーネーム フォーム %>
@@ -35,9 +35,7 @@
         <label class="form-text">ユーザーネーム</label>
         <span class="indispensable">必須</span>
       </div>
-      <div class='input-name-wrap'>
-        <%= f.text_area :name, class:"input-default", id:"last-name", placeholder:"例) テスター" %>
-      </div>
+      <%= f.text_area :name, class:"input-default", id:"last-name", placeholder:"例) テスター" %>
     </div>
     <%# メールアドレス フォーム %>
     <div class="form-group">
@@ -70,10 +68,10 @@
         <label class="form-text">性別</label>
         <span class="indispensable">必須</span>
       </div>
-      <div class='input-name-wrap'>
-          <label class="input-name"> <%= f.radio_button :gender_id, 1, checked: true %>男性</label>
-          <label class="input-name"> <%= f.radio_button :gender_id, 2 %>女性</label>
-          <label class="input-name"> <%= f.radio_button :gender_id, 3 %>その他</label>
+      <div class='button-name-wrap'>
+          <label class="button-name"> <%= f.radio_button :gender_id, 1, checked: true, class: "button-size" %>男性</label>
+          <label class="button-name"> <%= f.radio_button :gender_id, 2, class: "button-size"  %>女性</label>
+          <label class="button-name"> <%= f.radio_button :gender_id, 3, class: "button-size"  %>その他</label>
       </div>
     </div>
     <%# 身長 フォーム %>
@@ -82,9 +80,7 @@
         <label class="form-text">身長(cm)</label>
         <span class="indispensable">必須</span>
       </div>
-      <div class='input-name-wrap'>
-        <%= f.text_field :height, class:"input-default", id:"height", placeholder:"170" %>
-      </div>
+      <%= f.text_field :height, class:"input-default", id:"height", placeholder:"170" %>
     </div>
     <%# 生年月日 フォーム %>
     <div class="form-group">
@@ -124,4 +120,4 @@
   </div>
 <% end %>
 <%# フッター呼び出し %>
-<%= render "shared/second-footer"%>
+<%= render "shared/logon-footer"%>
