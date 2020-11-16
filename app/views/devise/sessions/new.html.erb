@@ -1,5 +1,5 @@
 <%# ヘッダー呼び出し %>
-<%= render "shared/second-header"%>
+<%= render "shared/logon-header"%>
 
 <%# ログイン画面(new_user_session_path)より情報を渡して、ログインユーザー作成(user_session_path)する %>
 <%= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f| %>
@@ -40,4 +40,4 @@
 <% end %>
 
 <%# フッター呼び出し %>
-<%= render "shared/second-footer"%>
+<%= render "shared/logon-footer"%>

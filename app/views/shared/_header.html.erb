@@ -1,39 +1,26 @@
 <%# CSS・・・assets/stylesheets/shared/header.css %>
 <%# トップページのヘッダー %>
-<header class='top-page-header'>
-  <%# 検索 %>
-  <div class='search-bar-contents'>
-    <%# フリマのロゴ %>
-    <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
-    <%# 検索フォーム %>
-    <form class="search-form" action="#">
-      <input class='input-box' placeholder='キーワードから探す'>
-      <button class="search-button">
-        <%= image_tag "search.png", class:"search-icon" %>
-      </button>
-    </form>
-  </div>
-  <%# リスト一覧 %>
+<header class='main-page-header'>
+
+  <%# リスト一覧------------------------------------------------------ %>
   <div class='nav'>
-    <%# 左側のリスト %>
+    <%# 左側のリスト-------------------------------------------------- %>
     <ul class='lists-left'>
+      <%# フリマのロゴ %>
+      <%= link_to image_tag("furima-logo-color.png", class: "furima-icon"), "/" %>
     </ul>
-    <%# 右側のリスト %>
+    <%# 右側のリスト-------------------------------------------------- %>
     <ul class='lists-right'>
-      <% if user_signed_in? %>
-        <%# ユーザー情報編集 %>
-        <%# 画像は、ログイン状態かつ登録している時に表示。それ以外はフラッグを表示 %>
-        <li><%= link_to current_user.name, edit_user_path(current_user.id), method: :get, class: "user-nickname" %></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
-          <% if current_user.image.attached? %>
-            <li><%= image_tag current_user.image, class: 'buy-item-img' %></li>
-          <% else %>
-            <li><%= image_tag "flag.png", class: 'buy-item-img' %></li>
-          <% end %>
+      <%# ユーザーネーム----------------------------------------------- %>
+      <li><%= link_to current_user.name, "#", class: "user-nickname" %></li>
+      <%# 画像登録している時------------------------------------------ %>
+      <% if current_user.image.attached? %>
+        <%# 登録画像表示--------------------------------------------- %>
+        <li><%= image_tag current_user.image, class: 'login-img' %></li>
+      <%# 画像登録していない時----------------------------------------- %>
       <% else %>
-        <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
-        <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
-        <li><%= image_tag "flag.png", class: 'buy-item-img' %></li>
+        <%# フラッグ画像表示------------------------------------------ %>
+        <li><%= image_tag "flag.png", class: 'login-img' %></li>
       <% end %>
     </ul>
   </div>

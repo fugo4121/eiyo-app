@@ -1,0 +1,367 @@
+
+
+
+// リスト----------------------------------------------
+ul {
+  list-style: none;
+}
+
+// ログインボタン----------------------------------------
+
+// ログイン     devise sessions new
+// ユーザー変更  users edit
+.login-btn {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+// ログイン     devise sessions new
+// ユーザー変更  users edit
+.login-red-btn {
+  width: 100%;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+// ログイン     devise sessions new
+.login-flash-message {
+  text-align: center;
+  color: red;
+}
+
+// ヘッダー画像 --------------------------------------------
+.login-img {
+  margin-right: 20px;
+  height: 130px;
+  width: 250px;
+  object-fit: contain;
+}
+
+
+// 新規ユーザー登録--------------------------------------------
+
+// ユーザー情報フォーム全体枠---------------------
+
+// ユーザー新規  devise registration new
+// ログイン     devise sessions new
+// ユーザー変更  users edit
+.registration-main {
+  width: 100%;
+  min-width: 800px;
+  height: 100%;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+}
+
+// 必須 ----------------------------------- 
+
+// ユーザー新規  devise registration new
+// ログイン     devise sessions new
+// ユーザー変更  users edit
+.indispensable {
+  background: #ea352d;
+  margin-left: 8px;
+  padding: 3px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+
+// 入力フォーム 全体枠----------------------------------- 
+
+// ユーザー新規  devise registration new
+// ログイン     devise sessions new
+// ユーザー変更  users edit
+// 健康管理新規  health new
+.form-wrap {
+  width: 50%;
+  background-color: white;
+  padding-bottom: 70px;
+}
+
+// 入力フォーム ヘッダー枠----------------------------------- 
+
+// ユーザー新規  devise registration new
+// ログイン     devise sessions new
+// ユーザー変更  users edit
+.form-header {
+  width: 100%;
+  height: 120px;
+  text-align: center;
+  font-size: 22px;
+}
+
+// 入力フォーム ヘッダーの文字---------------------------------
+
+// ユーザー新規  devise registration new
+// ログイン     devise sessions new
+// ユーザー変更  users edit
+.form-header-text {
+  line-height: 100px;
+  border-bottom: 1px solid #f5f5f5;
+  font-weight: bold;
+}
+
+// ユーザー画像 ---------------------------------
+
+// ユーザー新規  devise registration new
+// ユーザー変更  users edit
+.img-upload {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 2vh 0;
+}
+
+.img-choose {
+  width: 250px;
+}
+
+.click-upload {
+  margin: 15px 0;
+  min-width: 300px;
+}
+
+.click-upload>p {
+  margin-bottom: 15px;
+}
+
+
+// 項目グループ枠 ---------------------------------------------
+
+// ユーザー新規  devise registration new
+// ログイン     devise sessions new
+// ユーザー変更  users edit
+// 健康管理新規  health new
+.form-group {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.form-group:first-child {
+  padding: 0;
+}
+
+// 項目名 全体枠 ----------------------------------- 
+
+// ユーザー新規  devise registration new
+// ログイン     devise sessions new
+// ユーザー変更  users edit
+// 健康管理新規  health new
+.form-text-wrap {
+  width: 100%;
+  height: 20%;
+}
+// 項目名 ----------------------------------------- 
+
+// ユーザー新規  devise registration new
+// ログイン     devise sessions new
+// ユーザー変更  users edit
+// 健康管理新規  health new
+.form-text {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+// 項目フォーム 全体 --------------------------------- 
+
+// ユーザー新規  devise registration new
+// ユーザー変更  users edit
+// 健康管理新規  health new
+.input-name-wrap {
+  display: flex;
+  justify-content: center;
+  /* flex-wrap: wrap; */
+}
+
+// 項目フォーム(幅60％) -------------------------------
+
+// ユーザー新規  devise registration new
+// ログイン     devise sessions new
+// ユーザー変更  users edit
+// 健康管理新規  health new
+.input-default {
+  width: 60%;
+  margin-top: 5px;
+  height: 48px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+  resize: none;
+}
+
+// 項目フォーム(幅220px) -------------------------------------
+// ユーザー新規  devise registration new
+// ユーザー変更  users edit
+// 健康管理新規  health new
+.input-name {
+  width: 220px;
+  margin: 5px 10px 0 0;
+  height: 48px;
+  line-height: 30px;
+  padding: 10px 16px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 14px;
+  resize: none;
+}
+
+// ボタンフォーム -------------------------------------
+
+// ユーザー新規  devise registration new
+// ユーザー変更  users edit
+.button-name-wrap {
+  display: flex;
+}
+
+
+// ボタン項目 -------------------------------------
+
+// ユーザー新規  devise registration new
+// ユーザー変更  users edit
+.button-name {
+  width: 100px;
+  height: 50px;
+  background: #fff;
+  font-size: 16px;
+
+}
+
+// ボタンサイズ -------------------------------------
+
+// ユーザー新規  devise registration new
+// ユーザー変更  users edit
+.button-size {
+  width: 20px;
+}
+
+
+// 誕生日フォーム全体-------------------------------------------
+
+// ユーザー新規  devise registration new
+// ユーザー変更  users edit
+// 健康管理新規  health new
+.input-birth-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// 誕生日フォーム各選択項目--------------------------------------
+
+// ユーザー新規  devise registration new
+// ユーザー変更  users edit
+// 健康管理新規  health new
+.input-birth-wrap>select {
+  width: 75px;
+  margin-top: 5px;
+  height: 45px;
+  padding-left: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+// 誕生日フォーム項目のフォント------------------------------------
+
+// ユーザー新規  devise registration new
+// ユーザー変更  users edit
+// 健康管理新規  health new
+.input-birth-wrap>p {
+  line-height: 60px;
+  padding: 0 5px;
+}
+
+
+// 本人情報注意事項 -------------------------------------
+
+// ユーザー新規  devise registration new
+.info-text {
+  color: #888;
+  font-size: 15px;
+  margin-top: 3px;
+}
+
+// 会員登録注意事項 -------------------------------------
+
+// ユーザー新規  devise registration new
+.form-bottom-text {
+  font-size: 15px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.form-bottom-text:last-child {
+  margin: 0;
+  padding-bottom: 50px;
+}
+
+// 会員登録注意事項 利用規約 -------------------------------
+
+// ユーザー新規  devise registration new
+.form-bottom-text>span {
+  color: #0099e8;
+  cursor: pointer;
+}
+
+// 登録ボタン 全体枠 ----------------------------------------------
+
+// ユーザー新規  devise registration new
+// 健康管理新規  health new
+.register-btn {
+  width: 50%;
+  margin: 0 auto;
+}
+
+// 登録ボタン ----------------------------------------------------
+
+// ユーザー新規  devise registration new
+// 健康管理新規  health new
+.register-red-btn {
+  width: 100%;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+}
+// 会員登録について ------------------------------------------
+
+// ユーザー新規  devise registration new
+.register-info {
+  margin: 30px 180px 0 0;
+  color: #0099e8;
+  text-align: right;
+  cursor: pointer;
+}
+
+
+// データ表示 ----------------------------------------------------
+
+// 健康管理新規  health new
+.view-content {
+  width: 300px;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+

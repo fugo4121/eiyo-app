@@ -9,13 +9,13 @@ class Health < ApplicationRecord
   end
 
   with_options presence: true do
-    # 体重空白不可
-    validates :weight
-    # 消費カロリー空白不可
-    validates :burn_kcal
     # 記録日空白不可、重複不可、他ユーザーとの重複はOK
     validates :start_time, uniqueness: { scope: :user_id }
   end
+
+  validates :weight, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 300 }
+  validates :burn_kcal, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 10000 }
+  validates :intake_kcal, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 10000 }
 
   # 未来の日付の記録不可
   def date_after_start

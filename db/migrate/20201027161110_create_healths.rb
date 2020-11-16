@@ -4,6 +4,7 @@ class CreateHealths < ActiveRecord::Migration[6.0]
       t.integer   :weight,            null: false
       t.integer   :sleep_time_id,     null: false
       t.integer   :burn_kcal,         null: false
+      t.integer   :intake_kcal,       null: false
       t.text      :memo
       t.datetime  :start_time,        null: false
       t.integer   :user_id,           null: false

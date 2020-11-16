@@ -16,10 +16,6 @@ class User < ApplicationRecord
   validates :name, presence: true
   # 身長は50〜300cmの間であること
   validates :height, numericality: { greater_than_or_equal_to: 50, less_than_or_equal_to: 300 }
-  #性別は---が選択状態でないこと
-  with_options numericality: { other_than: 1, message: 'を選択してください' } do
-    validates :gender_id
-  end
   #生年月日は空白でないこと
   validates :birthday, presence: true
 end

@@ -1,6 +1,4 @@
 class HealthsController < ApplicationController
-  def index
-  end
 
   def new
     @health = Health.new
@@ -26,6 +24,6 @@ end
 private
 
 def health_params
-  params.require(:health).permit(:weight, :sleep_time_id, :burn_kcal, :memo, :start_time).merge(user_id: current_user.id)
+  params.require(:health).permit(:weight, :sleep_time_id, :burn_kcal, :intake_kcal, :memo, :start_time).merge(user_id: current_user.id)
 end
 

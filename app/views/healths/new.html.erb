@@ -1,5 +1,5 @@
 <%# --- ヘッダー呼び出し ----------------------------------------------- %>
-<%= render "shared/second-header"%>
+<%= render "shared/header"%>
 
 <%# --- フォーム入力 --------------------------------------------------- %>
 <%= form_with(model: @health, local: true) do |f| %>
@@ -39,8 +39,8 @@
         <%= f.collection_select(:sleep_time_id, SleepTime.all, :id, :time, {}, {class:"input-name", id:"sleep-time"}) %>
       </div>
       <%# 睡眠時間による消費カロリー %>
-      <div class="price-content">
-      <label class="form-text">睡眠の消費カロリー</label>
+      <div class="view-content">
+        <span>睡眠の消費カロリー</span>
         <span>
           <span id='sleep-kcal'>0</span> kcal
         </span>
@@ -59,15 +59,26 @@
         </div>
       </div>
     </div>
+    <%# --- 摂取カロリー --------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">摂取カロリー</label>
+          <span class="indispensable">必須</span>
+      </div>
+      <div class='input-name-wrap'>
+        <%= f.text_field :intake_kcal, class:"input-default", placeholder: "300", id:'burn-kcal' %>
+        <div class='form-text-wrap'>
+          <label class="form-text">kcal</label>
+        </div>
+      </div>
+    </div>
     <%# --- メモ ---------------------------------------------------------- %>
     <div class="form-group">
       <div class='form-text-wrap'>
           <label class="form-text">メモ</label>
           <span class="indispensable">任意</span>
       </div>
-      <div class='input-name-wrap'>
-          <%= f.text_area :memo, class:"input-default", placeholder: "メモ", rows: "10" %>
-      </div>
+      <%= f.text_area :memo, class:"input-default", placeholder: "メモ", rows: "10" %>
     </div>
     <%# --- 記録日 -------------------------------------------------------- %>
     <div class="form-group">
@@ -105,8 +116,9 @@
           <% healths.each do |health| %>
             <div>
               <%# 他ユーザーの記録日データが表示させないようにする %>
-              <% if current_user.id == health.user_id %>  
-                <%= "登録済" %>
+              <% if current_user.id == health.user_id %>
+                <div><%= health.weight %><%= " kg" %></div>
+                <div><%= health.intake_kcal - health.burn_kcal %><%= " kcal" %></div>
               <% end %>
             </div>
           <% end %>
@@ -117,5 +129,5 @@
   </div> 
 <% end %>
 
-
+<%= render "shared/footer"%>
 

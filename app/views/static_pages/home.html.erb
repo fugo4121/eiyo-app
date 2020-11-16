@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+  <%= render "shared/header"%>
+  <%= render "static_pages/main"%>
+  <%= render "shared/footer"%>
+<% else %>
+  <%= render "static_pages/top"%>
+<% end %>

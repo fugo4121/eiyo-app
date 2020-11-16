@@ -95,3 +95,9 @@ gem 'gon'
 
 # カレンダー導入
 gem 'simple_calendar', '~> 2.0'
+
+# bootstrap導入(jquery使用)
+gem 'bootstrap-sass', '3.4.1'
+gem 'jquery-rails'
+gem "jquery-ui-rails"
+gem 'font-awesome-sass'

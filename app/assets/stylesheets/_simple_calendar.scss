@@ -1,0 +1,45 @@
+.simple-calendar {
+  // 幅
+  width: 700px;
+
+  // ヘッダー
+  .calendar-heading {
+    font-size: 25px;
+    margin-top: 10px;
+    display: block;
+    text-align: center;
+  }
+  // @media (max-width: 180px) {
+  //   .calendar-heading {
+  //     font-size: 40px;
+  //   }
+  // }
+  
+  // 日付
+  .day {font-weight: bold;
+    height: 100px;}
+
+  // 日〜土
+  .wday-0 {background-color: pink;}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {background-color: skyblue;}
+
+  // 今日
+  .today {background-color: #FEFFC0;}
+
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month {}
+  .current-month {}
+
+  // 行事
+  .has-events {color: red;}
+}
