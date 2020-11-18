@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_27_161110) do
+ActiveRecord::Schema.define(version: 2020_11_17_160440) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +31,26 @@ ActiveRecord::Schema.define(version: 2020_10_27_161110) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "food_name", null: false
+    t.string "explain", null: false
+    t.integer "kcal", null: false
+    t.integer "protein", null: false
+    t.integer "lipid", null: false
+    t.integer "carb", null: false
+    t.integer "calcium", null: false
+    t.integer "iron", null: false
+    t.integer "vitamin_a", null: false
+    t.integer "vitamin_b1", null: false
+    t.integer "vitamin_b2", null: false
+    t.integer "vitamin_c", null: false
+    t.integer "vitamin_e", null: false
+    t.integer "fiber", null: false
+    t.integer "salt", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "healths", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
