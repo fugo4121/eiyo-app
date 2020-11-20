@@ -1,0 +1,75 @@
+
+
+<%= form_with(model: @meal, local: true) do |f| %>
+  <tbody>
+    <% @foods.each do |food| %>
+      <div>
+        <label class="button-name"> <%= f.radio_button :food_id, food.id, class: "button-size" %><%= food.food_name %></label>
+        <td class='text-center'><%= food.explain %></td>
+      </div>
+    <% end %>
+  </tbody>
+  <%= link_to "食品登録", new_food_path, class: "btn btn-success" %>
+  <%# --- 食事時間 -------------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <label class="form-text">食事時間</label>
+        <span class="indispensable">必須</span>
+      </div>
+      <div class='button-name-wrap'>
+          <label class="button-name"> <%= f.radio_button :meal_flg, 1, checked: true, class: "button-size" %>朝食</label>
+          <label class="button-name"> <%= f.radio_button :meal_flg, 2, class: "button-size"  %>昼食</label>
+          <label class="button-name"> <%= f.radio_button :meal_flg, 3, class: "button-size"  %>夕食</label>
+          <label class="button-name"> <%= f.radio_button :meal_flg, 4, class: "button-size"  %>その他</label>
+      </div>
+    </div>
+  <%# --- 食事数 -------------------------------------------------------- %>
+  <%= f.text_field :num, class:"input-default", placeholder: "60", id:'weight' %>
+  <%# --- 記録日 -------------------------------------------------------- %>
+  <div class="form-group">
+    <div class='form-text-wrap'>
+      <label class="form-text">記録日</label>
+      <span class="indispensable">必須</span>
+    </div>
+    <div class='input-birth-wrap'>
+        <%= raw sprintf(
+                  f.date_select(
+                    :start_time,
+                    class:'select-birth',
+                    id:"recording-date",
+                    use_month_numbers: true,
+                    prompt:'--',
+                    start_year: (Time.now.year - 1),
+                    end_year: (Time.now.year),
+                    selected: Date.today,
+                    date_separator: '%s'),
+                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+    </div>
+  </div>
+  <%# --- 送信ボタン ----------------------------------------------------- %>
+  <div class='register-btn'>
+    <%= f.submit "編集する" ,class:"register-red-btn" %>
+  </div>
+<% end %>
+
+<%# --- 登録表示 ----------------------------------------------------- %>
+<% @meals.each do |meal| %>
+  <div>
+    <td class='text-center'><%= meal.start_time %></td>
+    <td class='text-center'><%= meal.food.food_name %></td>
+    <td class='text-center'><%= meal.num %></td>
+    <% if meal.meal_flg == 1 then %>
+      <td class='text-center'>朝食</td>
+    <% elsif meal.meal_flg == 2 then %>
+      <td class='text-center'>昼食</td>
+    <% elsif meal.meal_flg == 3 then %>
+      <td class='text-center'>夕食</td>
+    <% elsif meal.meal_flg == 4 then %>
+      <td class='text-center'>その他</td>
+    <% end %>
+    <%= link_to '編集する', edit_meal_path(id: meal), class: 'btn-default btn-outline-success' %>
+    <%= link_to '削除する', meal_path(id: meal), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn-default btn-outline-danger' %>
+  </div>
+<% end %>
+
+<%= render "shared/footer"%>
