@@ -1,17 +1,16 @@
 class FoodsController < ApplicationController
+  before_action :set_food, only: [:edit, :update]
+  before_action :set_foods, only: [:new, :edit]
 
   def new
-    @foods = Food.all
     @food = Food.new
   end
 
   def create
-
     @food = Food.new(food_params)
 
     if @food.save
-      @foods = Food.all
-      redirect_to new_meal_path
+      redirect_to new_food_path
     else
       render :new
     end
@@ -19,17 +18,14 @@ class FoodsController < ApplicationController
 
   def destroy
     food = Food.find(params[:id])
-    meal.destroy
-    redirect_to new_meal_path
+    food.destroy
+    redirect_to new_food_path
   end
 
   def edit
-    @food = Food.find(params[:id])
-    @foods = Food.all
   end
 
   def update
-    @food = Food.find(params[:id])
     if @food.update(food_params)
       redirect_to new_food_path
     else
@@ -45,3 +41,10 @@ def food_params
   params.require(:food).permit(:food_name, :explain, :kcal, :protein, :lipid, :carb, :calcium, :iron, :vitamin_a, :vitamin_b1, :vitamin_b2, :vitamin_c, :vitamin_e, :fiber, :salt)
 end
 
+def set_food
+  @food = Food.find(params[:id])
+end
+
+def set_foods
+  @foods = Food.all.order('food_name ASC')
+end

@@ -1,3 +1,19 @@
-// Place all the styles related to the meals controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// search部品は、shared.scss
+
+.flerm {
+  display: flex;
+
+}
+
+.left {
+  margin-bottom: 30px;
+  width: 500px;
+}
+
+
+.right {
+  margin-bottom: 30px;
+  width: calc(100vw - 500px);
+  width: 500px;
+}

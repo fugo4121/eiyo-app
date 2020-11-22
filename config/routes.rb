@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   resources :healths
-  resources :foods 
+  resources :foods
   resources :meals
 
   resources :users, only: [:edit, :update]
