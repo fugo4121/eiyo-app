@@ -1,7 +1,7 @@
     <%# --- 登録表示 ----------------------------------------------------- %>
     <% @meals.each do |meal| %>
       <div>
-        <td class='text-center'><%= meal.start_time.to_s(:datetime_jp) %></td>
+        <td class='text-center'><%= meal.start_time.strftime("%Y年%m月%d日") %></td>
         <td class='text-center'><%= meal.food.food_name %></td>
         <td class='text-center'><%= meal.num %></td>
         <% if meal.meal_flg == 1 then %>
