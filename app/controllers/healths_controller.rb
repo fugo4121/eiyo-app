@@ -19,6 +19,16 @@ class HealthsController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    health = Health.find(params[:id])
+    health.destroy
+    redirect_to root_path, notice: '削除しました'
+  end
+
+  def edit
+    @health = Health.find(params[:id])
+  end
 end
 
 private

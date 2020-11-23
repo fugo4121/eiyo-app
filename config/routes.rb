@@ -5,5 +5,7 @@ Rails.application.routes.draw do
 
   resources :healths
   resources :foods
+  resources :meals
+
   resources :users, only: [:edit, :update]
 end
