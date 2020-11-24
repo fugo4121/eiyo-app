@@ -1,10 +1,9 @@
 <%# --- 題名 -------------------------------------------------------- %>
-<div><h1>編集する</h1></div>
+<div><h1>登録する</h1></div>
 <%# --- 食品登録フォーム -------------------------------------------------------- %>
 <div class='flerm'>
   <div class='left'>
-    <%# --- 食品検索フォーム -------------------------------------------------------- %>
-    <%= form_with(url: food_path, model: @food, local: true, method: :patch) do |f| %>
+    <%= form_with(url: training_menus_path, model: @training_menu, local: true, method: :post) do |f| %>
       <%= render "form", f: f %>
     <% end %>
   </div>

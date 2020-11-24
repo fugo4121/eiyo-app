@@ -1,5 +1,5 @@
 class Food < ApplicationRecord
-  has_many :meals
+  has_many :meals, dependent: :destroy
 
   def self.search(search)
     if search != ""

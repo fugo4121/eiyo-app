@@ -1,0 +1,68 @@
+<%# --- 題名 -------------------------------------------------------- %>
+<div><h1>登録する</h1></div>
+<%# --- 食品登録フォーム -------------------------------------------------------- %>
+<div class='flerm'>
+  <div class='left'>
+    <%# --- トレーニングフォーム -------------------------------------------------------- %>
+    <%= form_with(url: new_exercise_path, local: true, method: :get, class: "search-form") do |form| %>
+      <%= form.text_field :keyword3, placeholder: "検索する", class: "input-box" %>
+      <%= form.submit "検索",class:"search-button" %>
+    <% end %>
+    <%# --- 食品一覧 -------------------------------------------------------- %>
+    <%= form_with(url: exercises_path, model: @exercise, local: true, method: :post) do |f| %>
+      <%= render "form", f: f %>
+    <% end %>
+  </div>
+
+  <div class='right'>
+  <%# --- 登録表示 ----------------------------------------------------- %>
+    <%# --- 食事検索フォーム -------------------------------------------------------- %>
+    <%= form_with(url: new_exercise_path, local: true, method: :get, class: "search-form") do |form| %>
+      <% if @params3 == "00" then %>
+        <%= raw sprintf(
+            form.date_select(
+            :keyword4,
+            class:'select-birth',
+            id:"recording-date",
+            use_month_numbers: true,
+            prompt:'',
+            start_year: (Time.now.year - 1),
+            end_year: (Time.now.year),
+            date_separator: '%s'),
+            "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+      <% else %>
+        <%= raw sprintf(
+            form.date_select(
+            :keyword4,
+            class:'select-birth',
+            id:"recording-date",
+            use_month_numbers: true,
+            prompt:'',
+            start_year: (Time.now.year - 1),
+            end_year: (Time.now.year),
+            selected: @params.to_date,
+            date_separator: '%s'),
+            "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+      <% end %>   
+      <%= form.submit "検索",class:"search-button" %>
+    <% end %>
+  <%# メニュー(記録と紐づいている)が0件の時、データがありませんと表示 %>
+  <% if @training_menus.exists? %>
+    <%# --- 一覧表示 ----------------------------------------------------- %>
+    <% @exercises.each do |exercise| %>
+      <div>
+        <td class='text-center'><%= exercise.start_time.strftime("%Y年%m月%d日") %></td>
+        <td class='text-center'><%= exercise.training_menu.menu %></td>
+        <td class='text-center'><%= exercise.training_menu.explain %></td>
+        <td class='text-center'><%= exercise.set %></td>
+        <%= link_to '編集する', edit_exercise_path(id: exercise), class: 'btn-default btn-outline-success' %>
+        <%= link_to '削除する', exercise_path(id: exercise), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn-default btn-outline-danger' %>
+      </div>
+    <% end %>
+  <% else %>
+    <td class='text-center'>データがありません</td>
+  <% end %>
+  </div>
+
+</div>
+<%= render "shared/footer"%>

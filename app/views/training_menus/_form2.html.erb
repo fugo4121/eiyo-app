@@ -1,0 +1,10 @@
+<%# --- 登録表示 ----------------------------------------------------- %>
+<% @training_menus.each do |training_menu| %>
+  <div>
+    <td class='text-center'><%= training_menu.menu %></td>
+    <td class='text-center'><%= training_menu.explain %></td>
+    <td class='text-center'><%= training_menu.kcal %></td>
+    <%= link_to '編集する', edit_training_menu_path(id: training_menu), class: 'btn-default btn-outline-success' %>
+    <%= link_to '削除する', training_menu_path(id: training_menu), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn-default btn-outline-danger' %>
+  </div>
+<% end %>

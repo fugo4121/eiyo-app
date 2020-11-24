@@ -4,7 +4,7 @@
 <div class='flerm'>
   <div class='left'>
     <%# --- 食品検索フォーム -------------------------------------------------------- %>
-    <%= form_with(url: food_path, model: @food, local: true, method: :patch) do |f| %>
+    <%= form_with(url: training_menu_path, model: @training_menu, local: true, method: :patch) do |f| %>
       <%= render "form", f: f %>
     <% end %>
   </div>

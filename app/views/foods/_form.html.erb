@@ -1,0 +1,202 @@
+    <%# --- エラー表示 ---------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+        <%= render 'shared/error_messages', model: f.object %>
+      </div>
+    </div>
+    <%# --- 食品名 ---------------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">食品名</label>
+          <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_field :food_name, class:"input-default", placeholder: "ご飯" %>
+    </div>
+    <%# --- 説明 ---------------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">説明</label>
+          <span class="indispensable">任意</span>
+      </div>
+      <%= f.text_field :explain, class:"input-default", placeholder: "ご飯" %>
+    </div>
+    <%# --- カロリー --------------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">カロリー</label>
+          <span class="indispensable">必須</span>
+      </div>
+      <div class='input-name-wrap'>
+        <%= f.text_field :kcal, class:"input-default", placeholder: "60", id:'weight' %>
+        <div class='form-text-wrap'>
+          <label class="form-text">kcal</label>
+        </div>
+      </div>
+    </div>
+    <%# --- たんぱく質 --------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">たんぱく質</label>
+          <span class="indispensable">必須</span>
+      </div>
+      <div class='input-name-wrap'>
+        <%= f.text_field :protein, class:"input-default", placeholder: "300", id:'burn-kcal' %>
+        <div class='form-text-wrap'>
+          <label class="form-text">kcal</label>
+        </div>
+      </div>
+    </div>
+    <%# --- 脂質 --------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">脂質</label>
+          <span class="indispensable">必須</span>
+      </div>
+      <div class='input-name-wrap'>
+        <%= f.text_field :lipid, class:"input-default", placeholder: "300", id:'burn-kcal' %>
+        <div class='form-text-wrap'>
+          <label class="form-text">g</label>
+        </div>
+      </div>
+    </div>
+
+    <%# --- 炭水化物 --------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">炭水化物</label>
+          <span class="indispensable">必須</span>
+      </div>
+      <div class='input-name-wrap'>
+        <%= f.text_field :carb, class:"input-default", placeholder: "300", id:'burn-kcal' %>
+        <div class='form-text-wrap'>
+          <label class="form-text">g</label>
+        </div>
+      </div>
+    </div>
+    <%# --- カルシウム --------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">カルシウム</label>
+          <span class="indispensable">必須</span>
+      </div>
+      <div class='input-name-wrap'>
+        <%= f.text_field :calcium, class:"input-default", placeholder: "300", id:'burn-kcal' %>
+        <div class='form-text-wrap'>
+          <label class="form-text">g</label>
+        </div>
+      </div>
+    </div>
+    <%# --- 鉄 --------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">鉄</label>
+          <span class="indispensable">必須</span>
+      </div>
+      <div class='input-name-wrap'>
+        <%= f.text_field :iron, class:"input-default", placeholder: "300", id:'burn-kcal' %>
+        <div class='form-text-wrap'>
+          <label class="form-text">g</label>
+        </div>
+      </div>
+    </div>
+    <%# --- ビタミンA --------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">ビタミンA</label>
+          <span class="indispensable">必須</span>
+      </div>
+      <div class='input-name-wrap'>
+        <%= f.text_field :vitamin_a, class:"input-default", placeholder: "300", id:'burn-kcal' %>
+        <div class='form-text-wrap'>
+          <label class="form-text">g</label>
+        </div>
+      </div>
+    </div>
+    <%# --- ビタミンB1 --------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">ビタミンB1</label>
+          <span class="indispensable">必須</span>
+      </div>
+      <div class='input-name-wrap'>
+        <%= f.text_field :vitamin_b1, class:"input-default", placeholder: "300", id:'burn-kcal' %>
+        <div class='form-text-wrap'>
+          <label class="form-text">g</label>
+        </div>
+      </div>
+    </div>
+    <%# --- ビタミンB2 --------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">ビタミンB2</label>
+          <span class="indispensable">必須</span>
+      </div>
+      <div class='input-name-wrap'>
+        <%= f.text_field :vitamin_b2, class:"input-default", placeholder: "300", id:'burn-kcal' %>
+        <div class='form-text-wrap'>
+          <label class="form-text">g</label>
+        </div>
+      </div>
+    </div>
+    <%# --- ビタミンC --------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">ビタミンC</label>
+          <span class="indispensable">必須</span>
+      </div>
+      <div class='input-name-wrap'>
+        <%= f.text_field :vitamin_c, class:"input-default", placeholder: "300", id:'burn-kcal' %>
+        <div class='form-text-wrap'>
+          <label class="form-text">g</label>
+        </div>
+      </div>
+    </div>
+    <%# --- ビタミンE --------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">ビタミンE</label>
+          <span class="indispensable">必須</span>
+      </div>
+      <div class='input-name-wrap'>
+        <%= f.text_field :vitamin_e, class:"input-default", placeholder: "300", id:'burn-kcal' %>
+        <div class='form-text-wrap'>
+          <label class="form-text">g</label>
+        </div>
+      </div>
+    </div>
+    <%# --- 食物繊維 --------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">食物繊維</label>
+          <span class="indispensable">必須</span>
+      </div>
+      <div class='input-name-wrap'>
+        <%= f.text_field :fiber, class:"input-default", placeholder: "300", id:'burn-kcal' %>
+        <div class='form-text-wrap'>
+          <label class="form-text">g</label>
+        </div>
+      </div>
+    </div>
+    <%# --- 塩分 --------------------------------------------------- %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">塩分</label>
+          <span class="indispensable">必須</span>
+      </div>
+      <div class='input-name-wrap'>
+        <%= f.text_field :salt, class:"input-default", placeholder: "300", id:'burn-kcal' %>
+        <div class='form-text-wrap'>
+          <label class="form-text">g</label>
+        </div>
+      </div>
+    </div>
+    <%# --- 送信ボタン ----------------------------------------------------- %>
+    <div class='register-btn'>
+      <%# 新規登録か編集かにより、ボタン名称変更 %>
+      <% if request.path_info == new_food_path %>
+        <%= f.submit "登録する" ,class:"register-red-btn" %>
+      <% else %>
+        <%= f.submit "編集する" ,class:"register-red-btn" %>
+      <% end %>
+    </div>
+

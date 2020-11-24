@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :healths
   resources :foods
   resources :meals
+  resources :exercises
+  resources :training_menus
 
   resources :users, only: [:edit, :update]
 end

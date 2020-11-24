@@ -1,0 +1,10 @@
+<%# --- 登録表示 ----------------------------------------------------- %>
+<% @foods.each do |food| %>
+  <div>
+    <td class='text-center'><%= food.food_name %></td>
+    <td class='text-center'><%= food.explain %></td>
+    <td class='text-center'><%= food.kcal %></td>
+    <%= link_to '編集する', edit_food_path(id: food), class: 'btn-default btn-outline-success' %>
+    <%= link_to '削除する', food_path(id: food), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn-default btn-outline-danger' %>
+  </div>
+<% end %>
