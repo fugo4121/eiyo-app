@@ -45,5 +45,5 @@ def set_training_menu
 end
 
 def set_training_menus
-  @training_menus = TrainingMenu.all.order('menu ASC')
+  @training_menus = TrainingMenu.search3(params[:keyword3]).order('menu ASC')
 end

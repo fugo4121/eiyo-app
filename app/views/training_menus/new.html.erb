@@ -1,6 +1,6 @@
 <%# --- 題名 -------------------------------------------------------- %>
 <div><h1>登録する</h1></div>
-<%# --- 食品登録フォーム -------------------------------------------------------- %>
+<%# --- トレーニング登録フォーム -------------------------------------------------------- %>
 <div class='flerm'>
   <div class='left'>
     <%= form_with(url: training_menus_path, model: @training_menu, local: true, method: :post) do |f| %>
@@ -8,8 +8,30 @@
     <% end %>
   </div>
   <div class='right'>
-  <%# --- 登録表示 ----------------------------------------------------- %>
-    <%= render "form2" %>
+    <%# --- 登録表示 ----------------------------------------------------- %>
+    <%# --- トレーニング検索フォーム -------------------------------------------------------- %>
+    <%= form_with(url: new_training_menu_path, local: true, method: :get, class: "search-form") do |form| %>
+      <%= form.text_field :keyword3, placeholder: "検索する", class: "input-box" %>
+      <%= form.submit "検索",class:"search-button" %>
+    <% end %>
+    <%# --- トレーニング一覧 -------------------------------------------------------- %>
+    <%# メニューが0件の時、データがありませんと表示 %>
+    <% if @training_menus.exists? %>
+      <%# --- 一覧表示 ----------------------------------------------------- %>
+      <% @training_menus.each do |training_menu| %>
+        <div>
+          <td class='text-center'><%= training_menu.menu %></td>
+          <td class='text-center'><%= training_menu.explain %></td>
+          <td class='text-center'><%= training_menu.kcal %></td>
+          <%= link_to '編集する', edit_training_menu_path(id: training_menu), class: 'btn-default btn-outline-success' %>
+          <%= link_to '削除する', training_menu_path(id: training_menu), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn-default btn-outline-danger' %>
+        </div>
+      <% end %>
+    <% else %>
+      <td class='text-center'>データがありません</td>
+    <% end %>
+    <%# --- 食事登録画面 -------------------------------------------------------- %>
+    <div><%= link_to "運動管理画面に戻る", new_exercise_path, class: "btn btn-success" %></div>
   </div>
-
 </div>
+<%= render "shared/footer"%>

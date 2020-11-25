@@ -48,7 +48,7 @@
     <% end %>
     <%# --- 登録表示 ----------------------------------------------------- %>
     <%# 食品(食事と紐づいている)が0件の時、データがありませんと表示 %>
-    <% if @foods.exists? %>
+    <% if @meals.exists? %>
       <% @meals.each do |meal| %>
         <div>
           <td class='text-center'><%= meal.start_time.strftime("%Y年%m月%d日") %></td>

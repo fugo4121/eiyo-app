@@ -9,8 +9,13 @@
     <% end %>
   </div>
   <div class='right'>
-  <%# --- 登録表示 ----------------------------------------------------- %>
-    <%= render "form2" %>
+    <%# --- 編集表示 ----------------------------------------------------- %>
+    <h1>編集中データ</h1>
+    <td class='text-center'><%= @training_menu.menu %></td>
+    <td class='text-center'><%= @training_menu.explain %></td>
+    <td class='text-center'><%= @training_menu.kcal %></td>
+    <%# --- 登録画面 -------------------------------------------------------- %>
+    <div><%= link_to "登録画面に戻る", new_training_menu_path, class: "btn btn-success" %></div>
   </div>
-
 </div>
+<%= render "shared/footer"%>

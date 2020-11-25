@@ -46,5 +46,5 @@ def set_food
 end
 
 def set_foods
-  @foods = Food.all.order('food_name ASC')
+  @foods = Food.search(params[:keyword]).order('food_name ASC')
 end

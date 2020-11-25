@@ -8,7 +8,7 @@
       <%= form.text_field :keyword3, placeholder: "検索する", class: "input-box" %>
       <%= form.submit "検索",class:"search-button" %>
     <% end %>
-    <%# --- 食品一覧 -------------------------------------------------------- %>
+    <%# --- トレーニング一覧 -------------------------------------------------------- %>
     <%= form_with(url: exercises_path, model: @exercise, local: true, method: :post) do |f| %>
       <%= render "form", f: f %>
     <% end %>
@@ -47,7 +47,7 @@
       <%= form.submit "検索",class:"search-button" %>
     <% end %>
   <%# メニュー(記録と紐づいている)が0件の時、データがありませんと表示 %>
-  <% if @training_menus.exists? %>
+  <% if @exercises.exists? %>
     <%# --- 一覧表示 ----------------------------------------------------- %>
     <% @exercises.each do |exercise| %>
       <div>
