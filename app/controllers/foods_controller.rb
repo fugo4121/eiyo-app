@@ -38,7 +38,7 @@ end
 private
 
 def food_params
-  params.require(:food).permit(:food_name, :explain, :kcal, :protein, :lipid, :carb, :calcium, :iron, :vitamin_a, :vitamin_b1, :vitamin_b2, :vitamin_c, :vitamin_e, :fiber, :salt)
+  params.require(:food).permit(:menu, :explain, :kcal, :protein, :lipid, :carb, :calcium, :iron, :vitamin_a, :vitamin_b1, :vitamin_b2, :vitamin_c, :vitamin_e, :fiber, :salt)
 end
 
 def set_food
@@ -46,5 +46,5 @@ def set_food
 end
 
 def set_foods
-  @foods = Food.all.order('food_name ASC')
+  @foods = Food.search(params[:keyword]).order('menu ASC')
 end

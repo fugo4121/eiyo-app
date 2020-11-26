@@ -38,11 +38,11 @@ end
 private
 
 def meal_params
-  params.require(:meal).permit(:meal_flg, :num, :start_time, :food_id).merge(user_id: current_user.id)
+  params.require(:meal).permit(:period, :num, :start_time, :food_id).merge(user_id: current_user.id)
 end
 
 def set_foods
-  @foods = Food.search(params[:keyword]).order('food_name ASC')
+  @foods = Food.search(params[:keyword]).order('menu ASC')
 end
 
 def set_meal
@@ -50,7 +50,7 @@ def set_meal
 end
 
 def set_meals
-  @meals = Meal.search2(@params).includes(:food).order('start_time DESC').order('meal_flg DESC')
+  @meals = Meal.search2(@params).includes(:food).order('start_time DESC').order('period DESC')
 end
 
 def set_params

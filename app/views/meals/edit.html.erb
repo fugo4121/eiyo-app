@@ -9,42 +9,27 @@
       <%= form.submit "検索",class:"search-button" %>
     <% end %>
     <%= form_with(url: meal_path, model: @meal, local: true, method: :patch) do |f| %>
-      <%= render "meals/form", f: f %>
+      <%= render "form", f: f %>
     <% end %>
   </div>
 
   <div class='right'>
-      <%= form_with(url: edit_meal_path, local: true, method: :get, class: "search-form") do |form| %>
-      <% if @params3 == "00" then %>
-        <%= raw sprintf(
-            form.date_select(
-            :keyword2,
-            class:'select-birth',
-            id:"recording-date",
-            use_month_numbers: true,
-            prompt:'',
-            start_year: (Time.now.year - 1),
-            end_year: (Time.now.year),
-            date_separator: '%s'),
-            "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
-      <% else %>
-        <%= raw sprintf(
-            form.date_select(
-            :keyword2,
-            class:'select-birth',
-            id:"recording-date",
-            use_month_numbers: true,
-            prompt:'',
-            start_year: (Time.now.year - 1),
-            end_year: (Time.now.year),
-            selected: @params.to_date,
-            date_separator: '%s'),
-            "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
-      <% end %>   
-      <%= form.submit "検索",class:"search-button" %>
+    <%# --- 編集表示 ----------------------------------------------------- %>
+    <h1>編集中データ</h1>
+    <td class='text-center'><%= @meal.start_time.strftime("%Y年%m月%d日") %></td>
+    <td class='text-center'><%= @meal.food.menu %></td>
+    <td class='text-center'><%= @meal.num %></td>
+    <% if @meal.period == 1 then %>
+      <td class='text-center'>朝食</td>
+    <% elsif @meal.period == 2 then %>
+      <td class='text-center'>昼食</td>
+    <% elsif @meal.period == 3 then %>
+      <td class='text-center'>夕食</td>
+    <% elsif @meal.period == 4 then %>
+      <td class='text-center'>その他</td>
     <% end %>
-    <%# --- 登録表示 ----------------------------------------------------- %>
-    <%= render "meals/form2" %>
+    <%# --- 登録画面 -------------------------------------------------------- %>
+    <div><%= link_to "登録画面に戻る", new_meal_path, class: "btn btn-success" %></div>
   </div>
 </div>
 <%= render "shared/footer"%>

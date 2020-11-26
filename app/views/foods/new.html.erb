@@ -1,220 +1,38 @@
-<%# --- フォーム入力 --------------------------------------------------- %>
-<%= form_with(model: @food, local: true) do |f| %>
-  <div class='form-wrap'>
-    <%# --- タイトル ------------------------------------------------------ %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-        <h1>記録する</h1>
-      </div>
-    </div>
-    <%# --- エラー表示 ---------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-        <%= render 'shared/error_messages', model: f.object %>
-      </div>
-    </div>
-    <%# --- 食品名 ---------------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">食品名</label>
-          <span class="indispensable">必須</span>
-      </div>
-      <%= f.text_field :food_name, class:"input-default", placeholder: "ご飯" %>
-    </div>
-    <%# --- 説明 ---------------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">説明</label>
-          <span class="indispensable">任意</span>
-      </div>
-      <%= f.text_field :explain, class:"input-default", placeholder: "ご飯" %>
-    </div>
-    <%# --- カロリー --------------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">カロリー</label>
-          <span class="indispensable">必須</span>
-      </div>
-      <div class='input-name-wrap'>
-        <%= f.text_field :kcal, class:"input-default", placeholder: "60", id:'weight' %>
-        <div class='form-text-wrap'>
-          <label class="form-text">kcal</label>
-        </div>
-      </div>
-    </div>
-    <%# --- たんぱく質 --------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">たんぱく質</label>
-          <span class="indispensable">必須</span>
-      </div>
-      <div class='input-name-wrap'>
-        <%= f.text_field :protein, class:"input-default", placeholder: "300", id:'burn-kcal' %>
-        <div class='form-text-wrap'>
-          <label class="form-text">kcal</label>
-        </div>
-      </div>
-    </div>
-    <%# --- 脂質 --------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">脂質</label>
-          <span class="indispensable">必須</span>
-      </div>
-      <div class='input-name-wrap'>
-        <%= f.text_field :lipid, class:"input-default", placeholder: "300", id:'burn-kcal' %>
-        <div class='form-text-wrap'>
-          <label class="form-text">g</label>
-        </div>
-      </div>
-    </div>
-
-    <%# --- 炭水化物 --------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">炭水化物</label>
-          <span class="indispensable">必須</span>
-      </div>
-      <div class='input-name-wrap'>
-        <%= f.text_field :carb, class:"input-default", placeholder: "300", id:'burn-kcal' %>
-        <div class='form-text-wrap'>
-          <label class="form-text">g</label>
-        </div>
-      </div>
-    </div>
-    <%# --- カルシウム --------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">カルシウム</label>
-          <span class="indispensable">必須</span>
-      </div>
-      <div class='input-name-wrap'>
-        <%= f.text_field :calcium, class:"input-default", placeholder: "300", id:'burn-kcal' %>
-        <div class='form-text-wrap'>
-          <label class="form-text">g</label>
-        </div>
-      </div>
-    </div>
-    <%# --- 鉄 --------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">鉄</label>
-          <span class="indispensable">必須</span>
-      </div>
-      <div class='input-name-wrap'>
-        <%= f.text_field :iron, class:"input-default", placeholder: "300", id:'burn-kcal' %>
-        <div class='form-text-wrap'>
-          <label class="form-text">g</label>
-        </div>
-      </div>
-    </div>
-    <%# --- ビタミンA --------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">ビタミンA</label>
-          <span class="indispensable">必須</span>
-      </div>
-      <div class='input-name-wrap'>
-        <%= f.text_field :vitamin_a, class:"input-default", placeholder: "300", id:'burn-kcal' %>
-        <div class='form-text-wrap'>
-          <label class="form-text">g</label>
-        </div>
-      </div>
-    </div>
-    <%# --- ビタミンB1 --------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">ビタミンB1</label>
-          <span class="indispensable">必須</span>
-      </div>
-      <div class='input-name-wrap'>
-        <%= f.text_field :vitamin_b1, class:"input-default", placeholder: "300", id:'burn-kcal' %>
-        <div class='form-text-wrap'>
-          <label class="form-text">g</label>
-        </div>
-      </div>
-    </div>
-    <%# --- ビタミンB2 --------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">ビタミンB2</label>
-          <span class="indispensable">必須</span>
-      </div>
-      <div class='input-name-wrap'>
-        <%= f.text_field :vitamin_b2, class:"input-default", placeholder: "300", id:'burn-kcal' %>
-        <div class='form-text-wrap'>
-          <label class="form-text">g</label>
-        </div>
-      </div>
-    </div>
-    <%# --- ビタミンC --------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">ビタミンC</label>
-          <span class="indispensable">必須</span>
-      </div>
-      <div class='input-name-wrap'>
-        <%= f.text_field :vitamin_c, class:"input-default", placeholder: "300", id:'burn-kcal' %>
-        <div class='form-text-wrap'>
-          <label class="form-text">g</label>
-        </div>
-      </div>
-    </div>
-    <%# --- ビタミンE --------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">ビタミンE</label>
-          <span class="indispensable">必須</span>
-      </div>
-      <div class='input-name-wrap'>
-        <%= f.text_field :vitamin_e, class:"input-default", placeholder: "300", id:'burn-kcal' %>
-        <div class='form-text-wrap'>
-          <label class="form-text">g</label>
-        </div>
-      </div>
-    </div>
-    <%# --- 食物繊維 --------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">食物繊維</label>
-          <span class="indispensable">必須</span>
-      </div>
-      <div class='input-name-wrap'>
-        <%= f.text_field :fiber, class:"input-default", placeholder: "300", id:'burn-kcal' %>
-        <div class='form-text-wrap'>
-          <label class="form-text">g</label>
-        </div>
-      </div>
-    </div>
-    <%# --- 塩分 --------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">塩分</label>
-          <span class="indispensable">必須</span>
-      </div>
-      <div class='input-name-wrap'>
-        <%= f.text_field :salt, class:"input-default", placeholder: "300", id:'burn-kcal' %>
-        <div class='form-text-wrap'>
-          <label class="form-text">g</label>
-        </div>
-      </div>
-    </div>
-    <%# --- 送信ボタン ----------------------------------------------------- %>
-    <div class='register-btn'>
-      <%= f.submit "記録する" ,class:"register-red-btn" %>
-    </div>
-
-<%# --- 終了------------------------------------------------------------ %>
-  </div> 
-<% end %>
-
-<%# --- 登録表示 ----------------------------------------------------- %>
-<% @foods.each do |food| %>
-  <div>
-    <td class='text-center'><%= food.food_name %></td>
-    <td class='text-center'><%= food.kcal %></td>
-    <%= link_to '編集する', edit_food_path(id: food), class: 'btn-default btn-outline-success' %>
-    <%= link_to '削除する', meal_path(id: food), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn-default btn-outline-danger' %>
+<%# --- 題名 -------------------------------------------------------- %>
+<div><h1>登録する</h1></div>
+<%# --- 食品登録フォーム -------------------------------------------------------- %>
+<div class='flerm'>
+  <div class='left'>
+    <%# --- 食品入力フォーム -------------------------------------------------------- %>
+    <%= form_with(url: foods_path, model: @food, local: true, method: :post) do |f| %>
+      <%= render "form", f: f %>
+    <% end %>
   </div>
-<% end %>
-
+  <div class='right'>
+    <%# --- 登録表示 ----------------------------------------------------- %>
+    <%# --- 食品検索フォーム -------------------------------------------------------- %>
+    <%= form_with(url: new_food_path, local: true, method: :get, class: "search-form") do |form| %>
+      <%= form.text_field :keyword, placeholder: "検索する", class: "input-box" %>
+      <%= form.submit "検索",class:"search-button" %>
+    <% end %>
+    <%# --- 食品一覧 -------------------------------------------------------- %>
+    <%# メニューが0件の時、データがありませんと表示 %>
+    <% if @foods.exists? %>
+      <%# --- 一覧表示 ----------------------------------------------------- %>
+      <% @foods.each do |food| %>
+        <div>
+          <td class='text-center'><%= food.menu %></td>
+          <td class='text-center'><%= food.explain %></td>
+          <td class='text-center'><%= food.kcal %></td>
+          <%= link_to '編集する', edit_food_path(id: food), class: 'btn-default btn-outline-success' %>
+          <%= link_to '削除する', food_path(id: food), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn-default btn-outline-danger' %>
+        </div>
+      <% end %>
+    <% else %>
+      <td class='text-center'>データがありません</td>
+    <% end %>
+    <%# --- 食事登録画面 -------------------------------------------------------- %>
+    <div><%= link_to "食事管理画面に戻る", new_meal_path, class: "btn btn-success" %></div>
+  </div>
+</div>
+<%= render "shared/footer"%>
