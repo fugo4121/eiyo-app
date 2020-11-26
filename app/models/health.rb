@@ -14,8 +14,6 @@ class Health < ApplicationRecord
   end
 
   validates :weight, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 300 }
-  validates :burn_kcal, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 10000 }
-  validates :intake_kcal, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 10000 }
 
   # 未来の日付の記録不可
   def date_after_start

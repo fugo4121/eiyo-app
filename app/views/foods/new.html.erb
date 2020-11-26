@@ -3,7 +3,7 @@
 <%# --- 食品登録フォーム -------------------------------------------------------- %>
 <div class='flerm'>
   <div class='left'>
-    <%# --- 食品登録フォーム -------------------------------------------------------- %>
+    <%# --- 食品入力フォーム -------------------------------------------------------- %>
     <%= form_with(url: foods_path, model: @food, local: true, method: :post) do |f| %>
       <%= render "form", f: f %>
     <% end %>
@@ -21,7 +21,7 @@
       <%# --- 一覧表示 ----------------------------------------------------- %>
       <% @foods.each do |food| %>
         <div>
-          <td class='text-center'><%= food.food_name %></td>
+          <td class='text-center'><%= food.menu %></td>
           <td class='text-center'><%= food.explain %></td>
           <td class='text-center'><%= food.kcal %></td>
           <%= link_to '編集する', edit_food_path(id: food), class: 'btn-default btn-outline-success' %>

@@ -1,6 +1,6 @@
 class ExercisesController < ApplicationController
   before_action :set_params, only: [:new, :edit]
-  before_action :set_training_menus, only: [:new, :create, :edit, :update]
+  before_action :set_trainings, only: [:new, :create, :edit, :update]
   before_action :set_exercise, only: [:edit, :update]
   before_action :set_exercises, only: [:new, :create, :edit]
 
@@ -38,11 +38,11 @@ end
 private
 
 def exercise_params
-  params.require(:exercise).permit(:set, :start_time, :training_menu_id).merge(user_id: current_user.id)
+  params.require(:exercise).permit(:set, :start_time, :training_id).merge(user_id: current_user.id)
 end
 
-def set_training_menus
-  @training_menus = TrainingMenu.search3(params[:keyword3]).order('menu ASC')
+def set_trainings
+  @trainings = Training.search3(params[:keyword3]).order('menu ASC')
 end
 
 def set_exercise
@@ -50,7 +50,7 @@ def set_exercise
 end
 
 def set_exercises
-  @exercises = Exercise.search4(@params).includes(:training_menu).order('start_time DESC')
+  @exercises = Exercise.search4(@params).includes(:training).order('start_time DESC')
 end
 
 def set_params

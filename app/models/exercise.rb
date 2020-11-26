@@ -1,6 +1,6 @@
 class Exercise < ApplicationRecord
   belongs_to :user
-  belongs_to :training_menu
+  belongs_to :training
 
   def self.search4(search)
     if search != ""

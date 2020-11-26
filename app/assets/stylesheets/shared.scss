@@ -28,19 +28,24 @@ ul {
   list-style: none;
 }
 
-// ログインボタン----------------------------------------
+// 登録・ログインボタン 全体枠 ----------------------------------------------
 
-// ログイン     devise sessions new
+// ユーザー新規  devise registration new
 // ユーザー変更  users edit
-.login-btn {
+// 健康管理新規  health new
+// ログイン     devise sessions new
+.register-btn {
   width: 50%;
   margin: 0 auto;
-  margin-top: 50px;
 }
 
-// ログイン     devise sessions new
+// 登録・ログインボタン ----------------------------------------------------
+
+// ユーザー新規  devise registration new
 // ユーザー変更  users edit
-.login-red-btn {
+// 健康管理新規  health new
+// ログイン     devise sessions new
+.register-red-btn {
   width: 100%;
   background: #ea352d;
   border: 1px solid #ea352d;
@@ -49,6 +54,8 @@ ul {
   font-size: 14px;
   cursor: pointer;
 }
+
+
 
 // ログイン     devise sessions new
 .login-flash-message {
@@ -309,70 +316,6 @@ ul {
 .input-birth-wrap>p {
   line-height: 60px;
   padding: 0 5px;
-}
-
-
-// 本人情報注意事項 -------------------------------------
-
-// ユーザー新規  devise registration new
-.info-text {
-  color: #888;
-  font-size: 15px;
-  margin-top: 3px;
-}
-
-// 会員登録注意事項 -------------------------------------
-
-// ユーザー新規  devise registration new
-.form-bottom-text {
-  font-size: 15px;
-  margin-top: 10px;
-  text-align: center;
-}
-
-.form-bottom-text:last-child {
-  margin: 0;
-  padding-bottom: 50px;
-}
-
-// 会員登録注意事項 利用規約 -------------------------------
-
-// ユーザー新規  devise registration new
-.form-bottom-text>span {
-  color: #0099e8;
-  cursor: pointer;
-}
-
-// 登録ボタン 全体枠 ----------------------------------------------
-
-// ユーザー新規  devise registration new
-// 健康管理新規  health new
-.register-btn {
-  width: 50%;
-  margin: 0 auto;
-}
-
-// 登録ボタン ----------------------------------------------------
-
-// ユーザー新規  devise registration new
-// 健康管理新規  health new
-.register-red-btn {
-  width: 100%;
-  background: #ea352d;
-  border: 1px solid #ea352d;
-  color: #fff;
-  line-height: 48px;
-  font-size: 14px;
-  cursor: pointer;
-}
-// 会員登録について ------------------------------------------
-
-// ユーザー新規  devise registration new
-.register-info {
-  margin: 30px 180px 0 0;
-  color: #0099e8;
-  text-align: right;
-  cursor: pointer;
 }
 
 

@@ -52,8 +52,8 @@
     <% @exercises.each do |exercise| %>
       <div>
         <td class='text-center'><%= exercise.start_time.strftime("%Y年%m月%d日") %></td>
-        <td class='text-center'><%= exercise.training_menu.menu %></td>
-        <td class='text-center'><%= exercise.training_menu.explain %></td>
+        <td class='text-center'><%= exercise.training.menu %></td>
+        <td class='text-center'><%= exercise.training.explain %></td>
         <td class='text-center'><%= exercise.set %></td>
         <%= link_to '編集する', edit_exercise_path(id: exercise), class: 'btn-default btn-outline-success' %>
         <%= link_to '削除する', exercise_path(id: exercise), method: :delete, data: { confirm: '削除しますか？' }, class: 'btn-default btn-outline-danger' %>

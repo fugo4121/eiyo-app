@@ -5,23 +5,23 @@
   </div>
 </div>
 <%# --- トレーニング登録 -------------------------------------------------------- %>
-<%= link_to "トレーニングメニュー登録", new_training_menu_path, class: "btn btn-success" %>
+<%= link_to "トレーニングメニュー登録", new_training_path, class: "btn btn-success" %>
 <%# --- トレーニング一覧 -------------------------------------------------------- %>
 <tbody>
   <%# トレーニング0件の時、データがありませんと表示 %>
-  <% if @training_menus.exists? %>
-    <%# training_menu_countにより、1レコード目にチェックをする %>
-    <% training_menu_count = 0 %>
-    <% @training_menus.each do |training_menu| %>
+  <% if @trainings.exists? %>
+    <%# training_countにより、1レコード目にチェックをする %>
+    <% training_count = 0 %>
+    <% @trainings.each do |training| %>
       <div>
-        <% training_menu_count += 1 %>
-        <% if training_menu_count == 1 then %>
-          <label class="button-name"> <%= f.radio_button :training_menu_id, training_menu.id, checked: true, class: "button-size" %><%= training_menu.menu %></label>
+        <% training_count += 1 %>
+        <% if training_count == 1 then %>
+          <label class="button-name"> <%= f.radio_button :training_id, training.id, checked: true, class: "button-size" %><%= training.menu %></label>
         <% else %> 
-          <label class="button-name"> <%= f.radio_button :training_menu_id, training_menu.id, class: "button-size" %><%= training_menu.menu %></label>
+          <label class="button-name"> <%= f.radio_button :training_id, training.id, class: "button-size" %><%= training.menu %></label>
         <% end %>
-        <td class='text-center'><%= training_menu.explain %></td>
-        <td class='text-center'><%= training_menu.kcal %></td>
+        <td class='text-center'><%= training.explain %></td>
+        <td class='text-center'><%= training.kcal %></td>
       </div>
     <% end %>
   <% else %>
@@ -30,7 +30,7 @@
 </tbody>
 
 <%# トレーニング0件の時、登録できないように表示させない %>
-<% if @training_menus.exists? %>
+<% if @trainings.exists? %>
   <%# --- セット数 -------------------------------------------------------- %>
   <%= f.text_field :set, class:"input-default", placeholder: "60", id:'weight' %>
   <%# --- 記録日 -------------------------------------------------------- %>

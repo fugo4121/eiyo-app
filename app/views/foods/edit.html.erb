@@ -3,7 +3,7 @@
 <%# --- 食品登録フォーム -------------------------------------------------------- %>
 <div class='flerm'>
   <div class='left'>
-    <%# --- 食品検索フォーム -------------------------------------------------------- %>
+    <%# --- 食品入力フォーム -------------------------------------------------------- %>
     <%= form_with(url: food_path, model: @food, local: true, method: :patch) do |f| %>
       <%= render "form", f: f %>
     <% end %>
@@ -11,7 +11,7 @@
   <div class='right'>
     <%# --- 編集表示 ----------------------------------------------------- %>
     <h1>編集中データ</h1>
-    <td class='text-center'><%= @food.food_name %></td>
+    <td class='text-center'><%= @food.menu %></td>
     <td class='text-center'><%= @food.explain %></td>
     <td class='text-center'><%= @food.kcal %></td>
     <td class='text-center'><%= @food.protein %></td>

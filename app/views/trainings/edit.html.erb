@@ -4,18 +4,18 @@
 <div class='flerm'>
   <div class='left'>
     <%# --- 食品検索フォーム -------------------------------------------------------- %>
-    <%= form_with(url: training_menu_path, model: @training_menu, local: true, method: :patch) do |f| %>
+    <%= form_with(url: training_path, model: @training, local: true, method: :patch) do |f| %>
       <%= render "form", f: f %>
     <% end %>
   </div>
   <div class='right'>
     <%# --- 編集表示 ----------------------------------------------------- %>
     <h1>編集中データ</h1>
-    <td class='text-center'><%= @training_menu.menu %></td>
-    <td class='text-center'><%= @training_menu.explain %></td>
-    <td class='text-center'><%= @training_menu.kcal %></td>
+    <td class='text-center'><%= @training.menu %></td>
+    <td class='text-center'><%= @training.explain %></td>
+    <td class='text-center'><%= @training.kcal %></td>
     <%# --- 登録画面 -------------------------------------------------------- %>
-    <div><%= link_to "登録画面に戻る", new_training_menu_path, class: "btn btn-success" %></div>
+    <div><%= link_to "登録画面に戻る", new_training_path, class: "btn btn-success" %></div>
   </div>
 </div>
 <%= render "shared/footer"%>

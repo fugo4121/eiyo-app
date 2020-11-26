@@ -17,8 +17,8 @@
     <%# --- 編集表示 ----------------------------------------------------- %>
     <h1>編集中データ</h1>
     <td class='text-center'><%= @exercise.start_time.strftime("%Y年%m月%d日") %>
-    <td class='text-center'><%= @exercise.training_menu.menu %></td>
-    <td class='text-center'><%= @exercise.training_menu.explain %></td>
+    <td class='text-center'><%= @exercise.training.menu %></td>
+    <td class='text-center'><%= @exercise.training.explain %></td>
     <td class='text-center'><%= @exercise.set %></td>
     <%# --- 登録画面 -------------------------------------------------------- %>
     <div><%= link_to "登録画面に戻る", new_exercise_path, class: "btn btn-success" %></div>

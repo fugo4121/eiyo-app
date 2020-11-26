@@ -36,14 +36,14 @@ ActiveRecord::Schema.define(version: 2020_11_23_115925) do
   create_table "exercises", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "set", null: false
     t.date "start_time", null: false
-    t.integer "training_menu_id", null: false
+    t.integer "training_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "food_name", null: false
+    t.string "menu", null: false
     t.string "explain", null: false
     t.integer "kcal", null: false
     t.integer "protein", null: false
@@ -63,10 +63,8 @@ ActiveRecord::Schema.define(version: 2020_11_23_115925) do
   end
 
   create_table "healths", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "weight", null: false
+    t.float "weight", null: false
     t.integer "sleep_time_id", null: false
-    t.integer "burn_kcal", null: false
-    t.integer "intake_kcal", null: false
     t.text "memo"
     t.datetime "start_time", null: false
     t.integer "user_id", null: false
@@ -75,7 +73,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_115925) do
   end
 
   create_table "meals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "meal_flg", null: false
+    t.string "period", null: false
     t.integer "num", null: false
     t.date "start_time", null: false
     t.integer "food_id", null: false
@@ -84,7 +82,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_115925) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "training_menus", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "trainings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "menu", null: false
     t.string "explain", null: false
     t.integer "kcal", null: false
@@ -96,7 +94,7 @@ ActiveRecord::Schema.define(version: 2020_11_23_115925) do
     t.string "name", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.integer "gender_id", null: false
+    t.string "gender", null: false
     t.integer "height", null: false
     t.date "birthday", null: false
     t.string "reset_password_token"

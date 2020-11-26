@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :training_menu do
+  factory :training do
     
   end
 end

@@ -4,7 +4,7 @@ class Food < ApplicationRecord
   def self.search(search)
     if search != ""
       #食品名を検索
-      Food.where('food_name LIKE(?)', "%#{search}%")
+      Food.where('menu LIKE(?)', "%#{search}%")
     else
       Food.all
     end

@@ -16,9 +16,9 @@
       <div>
         <% food_count += 1 %>
         <% if food_count == 1 then %>
-          <label class="button-name"> <%= f.radio_button :food_id, food.id, checked: true, class: "button-size" %><%= food.food_name %></label>
+          <label class="button-name"> <%= f.radio_button :food_id, food.id, checked: true, class: "button-size" %><%= food.menu %></label>
         <% else %> 
-          <label class="button-name"> <%= f.radio_button :food_id, food.id, class: "button-size" %><%= food.food_name %></label>
+          <label class="button-name"> <%= f.radio_button :food_id, food.id, class: "button-size" %><%= food.menu %></label>
         <% end %>
         <td class='text-center'><%= food.explain %></td>
         <td class='text-center'><%= food.kcal %></td>
@@ -37,10 +37,10 @@
       <span class="indispensable">必須</span>
     </div>
     <div class='button-name-wrap'>
-        <label class="button-name"> <%= f.radio_button :meal_flg, 1, checked: true, class: "button-size" %>朝食</label>
-        <label class="button-name"> <%= f.radio_button :meal_flg, 2, class: "button-size"  %>昼食</label>
-        <label class="button-name"> <%= f.radio_button :meal_flg, 3, class: "button-size"  %>夕食</label>
-        <label class="button-name"> <%= f.radio_button :meal_flg, 4, class: "button-size"  %>その他</label>
+        <label class="button-name"> <%= f.radio_button :period, "朝食", checked: true, class: "button-size" %>朝食</label>
+        <label class="button-name"> <%= f.radio_button :period, "昼食", class: "button-size"  %>昼食</label>
+        <label class="button-name"> <%= f.radio_button :period, "夕食", class: "button-size"  %>夕食</label>
+        <label class="button-name"> <%= f.radio_button :period, "その他", class: "button-size"  %>その他</label>
     </div>
   </div>
   <%# --- 食事数 -------------------------------------------------------- %>

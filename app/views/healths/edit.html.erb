@@ -1,103 +1,11 @@
 <%# --- ヘッダー呼び出し ----------------------------------------------- %>
 <%= render "shared/header"%>
 
-<%# --- フォーム入力 --------------------------------------------------- %>
-<%= form_with(model: @health, local: true) do |f| %>
-  <div class='form-wrap'>
-    <%# --- タイトル ------------------------------------------------------ %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-        <h1>記録する</h1>
-      </div>
-    </div>
-    <%# --- エラー表示 ---------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-        <%= render 'shared/error_messages', model: f.object %>
-      </div>
-    </div>
-    <%# --- 体重 --------------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">体重</label>
-          <span class="indispensable">必須</span>
-      </div>
-      <div class='input-name-wrap'>
-        <%= f.text_field :weight, class:"input-default", placeholder: "60", id:'weight' %>
-        <div class='form-text-wrap'>
-          <label class="form-text">kg</label>
-        </div>
-      </div>
-    </div>
-    <%# --- 睡眠時間 ------------------------------------------------------ %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">睡眠時間</label>
-          <span class="indispensable">必須</span>
-      </div>
-      <div class='input-text-wrap'>
-        <%= f.collection_select(:sleep_time_id, SleepTime.all, :id, :time, {}, {class:"input-name", id:"sleep-time"}) %>
-      </div>
-      <%# 睡眠時間による消費カロリー %>
-      <div class="view-content">
-        <span>睡眠の消費カロリー</span>
-        <span>
-          <span id='sleep-kcal'>0</span> kcal
-        </span>
-      </div>
-    </div>
-    <%# --- 消費カロリー --------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">消費カロリー(運動量)</label>
-          <span class="indispensable">必須</span>
-      </div>
-      <div class='input-name-wrap'>
-        <%= f.text_field :burn_kcal, class:"input-default", placeholder: "300", id:'burn-kcal' %>
-        <div class='form-text-wrap'>
-          <label class="form-text">kcal</label>
-        </div>
-      </div>
-    </div>
-    <%# --- 摂取カロリー --------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">摂取カロリー</label>
-          <span class="indispensable">必須</span>
-      </div>
-      <div class='input-name-wrap'>
-        <%= f.text_field :intake_kcal, class:"input-default", placeholder: "300", id:'burn-kcal' %>
-        <div class='form-text-wrap'>
-          <label class="form-text">kcal</label>
-        </div>
-      </div>
-    </div>
-    <%# --- メモ ---------------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">メモ</label>
-          <span class="indispensable">任意</span>
-      </div>
-      <%= f.text_area :memo, class:"input-default", placeholder: "メモ", rows: "10" %>
-    </div>
-    <%# --- 記録日 -------------------------------------------------------- %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">記録日</label>
-      </div>
-      <div class='input-name-wrap'>
-        <div class='form-text-wrap'>
-          <label class="form-text"><%= @health.start_time %></label>
-        </div>
-      </div>
-    </div>
-    <%# --- 送信ボタン ----------------------------------------------------- %>
-    <div class='register-btn'>
-      <%= f.submit "記録する" ,class:"register-red-btn" %>
-    </div>
-<%# --- 終了------------------------------------------------------------ %>
-  </div> 
+<%# --- 体調入力フォーム --------------------------------------------------- %>
+<%= form_with(url: health_path, model: @health, local: true, method: :patch) do |f| %>
+  <%= render "form", f: f %>
 <% end %>
 
+<%# --- フッター呼び出し ----------------------------------------------- %>
 <%= render "shared/footer"%>
 
