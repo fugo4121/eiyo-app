@@ -18,7 +18,7 @@
         <span class="indispensable">必須</span>
     </div>
     <div class='input-name-wrap'>
-      <%= f.number_field :weight, class:"input-default", placeholder: "60", id:'weight' %>
+      <%= f.text_field :weight, class:"input-default", placeholder: "60", id:'weight' %>
       <div class='form-text-wrap'>
         <label class="form-text">kg</label>
       </div>
@@ -50,18 +50,7 @@
     <%= f.text_area :memo, class:"input-default", placeholder: "メモ", rows: "10" %>
   </div>
   <%# --- 記録日 -------------------------------------------------------- %>
-  <% if request.path_info == edit_health_path(current_user.id) %>
-    <div class="form-group">
-      <div class='form-text-wrap'>
-          <label class="form-text">記録日</label>
-      </div>
-      <div class='input-name-wrap'>
-        <div class='form-text-wrap'>
-          <label class="form-text"><%= @health.start_time.strftime("%Y年%m月%d日") %></label>
-        </div>
-      </div>
-    </div>
-  <% else %>
+  <% if request.path_info == new_health_path %>
     <div class="form-group">
       <div class='form-text-wrap'>
         <label class="form-text">記録日</label>
@@ -82,13 +71,24 @@
                     "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
       </div>
     </div>
+    <% else %>
+    <div class="form-group">
+      <div class='form-text-wrap'>
+          <label class="form-text">記録日</label>
+      </div>
+      <div class='input-name-wrap'>
+        <div class='form-text-wrap'>
+          <label class="form-text"><%= @health.start_time.strftime("%Y年%m月%d日") %></label>
+        </div>
+      </div>
+    </div>
   <% end %>
   <%# --- 送信ボタン ----------------------------------------------------- %>
   <div class='register-btn'>
-    <% if request.path_info == edit_health_path(current_user.id) %>
-      <%= f.submit "変更する" ,class:"register-red-btn" %>
-    <% else %>
+    <% if request.path_info == new_health_path %>
       <%= f.submit "記録する" ,class:"register-red-btn" %>
+    <% else %>
+      <%= f.submit "変更する" ,class:"register-red-btn" %>
     <% end %>
   </div>
 <%# --- 終了------------------------------------------------------------ %>
