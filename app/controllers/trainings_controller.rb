@@ -12,7 +12,7 @@ class TrainingsController < ApplicationController
     if @training.save
       redirect_to new_training_path
     else
-      render :new
+      render action: :new
     end
   end
 
@@ -29,7 +29,7 @@ class TrainingsController < ApplicationController
     if @training.update(training_params)
       redirect_to new_training_path
     else
-      render :edit
+      render action: :edit
     end
   end
 end

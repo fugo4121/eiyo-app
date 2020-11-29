@@ -1,0 +1,141 @@
+
+<table class='weight-table'>
+  <thead>
+    <tr>
+      <th class='record-date'>日付</th>
+      <th class='record-weight'>体重</th>
+      <th class='record-weight'>前回比</th>
+      <th class='record-weight'>BMI</th>
+      <th class='record-kcal'>総合kcal</th>
+      <th class='record-sleep'>睡眠時間</th>
+      <th class='record-kcal'>運動kcal</th>
+      <th class='record-kcal'>摂取kcal</th>
+      <th class='record-kcal'>朝食kcal</th>
+      <th class='record-kcal'>昼食kcal</th>
+      <th class='record-kcal'>夕食kcal</th>
+      <th class='record-kcal'>他食kcal</th>
+    </tr>
+  </thead>  
+  <tbody class='text-center'>
+    <%# 年齢--------------------------------------------------- %>
+    <% age = (@standard_date.strftime('%Y%m%d').to_i - @user.birthday.strftime('%Y%m%d').to_i) / 10000 %>
+    <%# 前回比の前データ保存用----------------------------------- %>
+    <% weight_last = 0 %>
+    <%# 30日分------------------------------------------------ %>
+    <% 30.downto(0) do |i| %>
+      <tr>
+        <td class='record-date'><%= @standard_date.ago(i.days).strftime("%Y年%m月%d日(#{@weeks[@standard_date.ago(i.days).wday]})")%></td>
+        <%# 体重、前回比、BMI----------------------------------- %>
+        <% weight = 0 %>
+        <% sleep_kcal = 0 %>
+        <% sleep_time = "" %>
+        <% metabo = 0 %>
+        <% @healths.each do |health| %>
+          <% if @standard_date.ago(i.days).to_date == health.start_time.to_date %>
+            <% if current_user.id == health.user_id %>
+              <% weight = health.weight %>
+              <% sleep_kcal = @sleep_times.all_records[health.sleep_time_id].kcal %>
+              <% sleep_time = @sleep_times.all_records[health.sleep_time_id].time %>
+            <% end %>
+          <% end %>
+        <% end %>
+        <%# 帳票表示------------------------------------------------ %>
+        <% if weight == 0 %>
+          <td class='record-weight' ></td>
+          <td class='record-weight' ></td>
+          <td class='record-weight' ></td>
+        <% else %>
+          <%# 体重表示----------------------------------------------- %>
+          <td class='record-weight' ><%= weight.round(1) %> kg</td>
+          <%# 前回比表示--------------------------------------------- %>
+          <% if weight_last == 0 %>
+            <td class='record-weight' >---</td>
+          <% elsif (weight - weight_last) > 0 %>
+            <td class='record-weight' >+<%= (weight - weight_last).round(1) %> kg</td>
+          <% else %>
+            <td class='record-weight' ><%= (weight - weight_last).round(1) %> kg</td>
+          <% end %>
+          <%# BMI表示------------------------------------------------ %>
+          <td class='record-weight' ><%= (weight / ((@user.height.to_f / 100) * (@user.height.to_f / 100).round(5))).round(2)  %></td>
+          <% weight_last = weight %>
+          <%# 新陳代謝計算(その他は適当)-------------------------------------- %>
+          <% if @user.gender == "男性" %>
+            <% metabo = (13.397 * weight + 4.799 * @user.height - 5.677 * age + 88.362).to_i %>
+          <% elsif @user.gender == "女性" %>
+            <% metabo = (9.247 * weight + 3.098 * @user.height - 4.33 * age + 447.593).to_i %>
+          <% elsif @user.gender == "その他" %>
+            <% metabo = (11 * weight + 3.8 * @user.height - 5 * age + 200).to_i %>
+          <% end %>
+        <% end %>
+        <%# binding.pry%>
+        <%# 総カロリー------------------------------------------------ %>
+        <% total_kcal = 0 %>
+        <%# 朝・昼・夕・その他カロリー------------------------------------ %>
+        <% meal_kcal = 0 %>
+        <% fast_kcal = 0 %>
+        <% lunch_kcal = 0 %>
+        <% dinner_kcal = 0 %>
+        <% other_kcal = 0 %>
+        <% @meals.each do |meal| %>
+          <% if @standard_date.ago(i.days).to_date == meal.start_time.to_date %>
+            <% if current_user.id == meal.user_id %>
+              <% meal_kcal = meal_kcal + meal.num * meal.food.kcal %>
+              <% if meal.period == "朝食" %>
+                <% fast_kcal = fast_kcal + meal.num * meal.food.kcal %>
+              <% elsif meal.period == "昼食" %>
+                <% lunch_kcal = lunch_kcal + meal.num * meal.food.kcal %>
+              <% elsif meal.period == "夕食" %>
+                <% dinner_kcal = dinner_kcal + meal.num * meal.food.kcal %>
+              <% elsif meal.period == "その他" %>
+                <% other_kcal = other_kcal + meal.num * meal.food.kcal %>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+        <%# 運動カロリー-------------------------------------------------- %>
+        <% exercise_kcal = 0 %>
+        <% @exercises.each do |exercise| %>
+          <% if @standard_date.ago(i.days).to_date == exercise.start_time.to_date %>
+            <% if current_user.id == exercise.user_id %>
+              <% exercise_kcal = exercise_kcal + exercise.set * exercise.training.kcal %>
+            <% end %>
+          <% end %>
+        <% end %>
+        <%# 総合カロリー表示------------------------------------------------ %>
+        <% if exercise_kcal == 0 or meal_kcal == 0 or sleep_kcal == 0 %>
+          <td class='record-kcal' >---</td>
+        <% else %>
+          <%# 総合計算---------------------------------------------------- %>
+          <% total_kcal = total_kcal - metabo + meal_kcal - sleep_kcal - exercise_kcal %>
+          <td class='record-kcal'><%= total_kcal %> kcal</td>
+        <% end %>
+        <%# 睡眠表示------------------------------------------------------- %>
+        <% if weight == 0 %>
+          <td class='record-weight' ></td>
+        <% else %>
+          <td class='record-sleep' ><%= sleep_time %></td>
+        <% end %>
+        <%# 運動カロリー表示------------------------------------------------ %>
+        <% if exercise_kcal == 0 %>
+          <td class='record-kcal' ></td>
+        <% else %>
+          <td class='record-kcal'>-<%= exercise_kcal %> kcal</td>
+        <% end %>
+        <%# 各カロリー表示-------------------------------------------------- %>
+        <% if meal_kcal == 0 %>
+          <td class='record-kcal' ></td>
+          <td class='record-kcal' ></td>
+          <td class='record-kcal' ></td>
+          <td class='record-kcal' ></td>
+          <td class='record-kcal' ></td>
+        <% else %>
+          <td class='record-kcal'><%= meal_kcal %> kcal</td>
+          <td class='record-kcal'><%= fast_kcal %> kcal</td>
+          <td class='record-kcal'><%= lunch_kcal %> kcal</td>
+          <td class='record-kcal'><%= dinner_kcal %> kcal</td>
+          <td class='record-kcal'><%= other_kcal %> kcal</td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
