@@ -13,7 +13,7 @@ class ExercisesController < ApplicationController
     if @exercise.save
       redirect_to new_exercise_path
     else
-      render :new
+      render action: :new
     end
   end
 
@@ -30,7 +30,7 @@ class ExercisesController < ApplicationController
     if @exercise.update(exercise_params)
       redirect_to new_exercise_path
     else
-      render :edit
+      render action: :edit
     end
   end
 end

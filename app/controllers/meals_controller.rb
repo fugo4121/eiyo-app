@@ -13,7 +13,7 @@ class MealsController < ApplicationController
     if @meal.save
       redirect_to new_meal_path
     else
-      render :new
+      render action: :new
     end
   end
 
@@ -30,7 +30,7 @@ class MealsController < ApplicationController
     if @meal.update(meal_params)
       redirect_to new_meal_path
     else
-      render :edit
+      render action: :edit
     end
   end
 end

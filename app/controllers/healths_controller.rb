@@ -18,7 +18,7 @@ class HealthsController < ApplicationController
     if @health.save
       redirect_to root_path
     else
-      render :new
+      render action: :new
     end
   end
 
@@ -36,7 +36,7 @@ class HealthsController < ApplicationController
     if @health.update(health_params)
       redirect_to new_health_path
     else
-      render :edit
+      render action: :edit
     end
   end
 

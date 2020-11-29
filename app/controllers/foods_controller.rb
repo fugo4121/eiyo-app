@@ -12,7 +12,7 @@ class FoodsController < ApplicationController
     if @food.save
       redirect_to new_food_path
     else
-      render :new
+      render action: :new
     end
   end
 
@@ -29,7 +29,7 @@ class FoodsController < ApplicationController
     if @food.update(food_params)
       redirect_to new_food_path
     else
-      render :edit
+      render action: :edit
     end
   end
 

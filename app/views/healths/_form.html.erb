@@ -47,10 +47,10 @@
         <label class="form-text">メモ</label>
         <span class="indispensable">任意</span>
     </div>
-    <%= f.text_area :memo, class:"input-default", placeholder: "メモ", rows: "10" %>
+    <%= f.text_field :memo, class:"input-default", placeholder: "メモ", id:'weight' %>
   </div>
   <%# --- 記録日 -------------------------------------------------------- %>
-  <% if request.path_info == new_health_path %>
+  <% if request.path_info == "/healths/new" or request.path_info == "/healths" %>
     <div class="form-group">
       <div class='form-text-wrap'>
         <label class="form-text">記録日</label>
@@ -85,7 +85,7 @@
   <% end %>
   <%# --- 送信ボタン ----------------------------------------------------- %>
   <div class='register-btn'>
-    <% if request.path_info == new_health_path %>
+    <% if request.path_info == "/healths/new" or request.path_info == "/healths" %>
       <%= f.submit "記録する" ,class:"register-red-btn" %>
     <% else %>
       <%= f.submit "変更する" ,class:"register-red-btn" %>
