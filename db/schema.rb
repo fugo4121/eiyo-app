@@ -46,18 +46,18 @@ ActiveRecord::Schema.define(version: 2020_11_23_115925) do
     t.string "menu", null: false
     t.string "explain", null: false
     t.integer "kcal", null: false
-    t.integer "protein", null: false
-    t.integer "lipid", null: false
-    t.integer "carb", null: false
-    t.integer "calcium", null: false
-    t.integer "iron", null: false
-    t.integer "vitamin_a", null: false
-    t.integer "vitamin_b1", null: false
-    t.integer "vitamin_b2", null: false
-    t.integer "vitamin_c", null: false
-    t.integer "vitamin_e", null: false
-    t.integer "fiber", null: false
-    t.integer "salt", null: false
+    t.float "protein", default: 0.0, null: false
+    t.float "lipid", default: 0.0, null: false
+    t.float "carb", default: 0.0, null: false
+    t.float "calcium", default: 0.0, null: false
+    t.float "iron", default: 0.0, null: false
+    t.float "vitamin_a", default: 0.0, null: false
+    t.float "vitamin_b1", default: 0.0, null: false
+    t.float "vitamin_b2", default: 0.0, null: false
+    t.float "vitamin_c", default: 0.0, null: false
+    t.float "vitamin_e", default: 0.0, null: false
+    t.float "fiber", default: 0.0, null: false
+    t.float "salt", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

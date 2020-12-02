@@ -16,7 +16,7 @@ class HealthsController < ApplicationController
     @health = Health.new(health_params)
 
     if @health.save
-      redirect_to root_path
+      redirect_to new_health_path
     else
       render action: :new
     end
@@ -25,7 +25,7 @@ class HealthsController < ApplicationController
   def destroy
     health = Health.find(params[:id])
     health.destroy
-    redirect_to root_path, notice: '削除しました'
+    redirect_to new_health_path, notice: '削除しました'
   end
 
   def edit

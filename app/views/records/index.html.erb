@@ -2,18 +2,31 @@
 <table class='weight-table'>
   <thead>
     <tr>
-      <th class='record-date'>日付</th>
-      <th class='record-weight'>体重</th>
-      <th class='record-weight'>前回比</th>
-      <th class='record-weight'>BMI</th>
-      <th class='record-kcal'>総合kcal</th>
-      <th class='record-sleep'>睡眠時間</th>
-      <th class='record-kcal'>運動kcal</th>
-      <th class='record-kcal'>摂取kcal</th>
-      <th class='record-kcal'>朝食kcal</th>
-      <th class='record-kcal'>昼食kcal</th>
-      <th class='record-kcal'>夕食kcal</th>
-      <th class='record-kcal'>他食kcal</th>
+      <th class='record-date title'>日付</th>
+      <th class='record-weight title'>体重</th>
+      <th class='record-weight-last title'>前回比</th>
+      <th class='record-weight title'>BMI</th>
+      <th class='record-total-kcal title'>総合kcal</th>
+      <th class='record-sleep title'>睡眠時間</th>
+      <th class='record-kcal title'>運動kcal</th>
+      <th class='record-kcal title'>摂取kcal</th>
+      <th class='record-kcal title'>朝食kcal</th>
+      <th class='record-kcal title'>昼食kcal</th>
+      <th class='record-kcal title'>夕食kcal</th>
+      <th class='record-kcal title'>間食kcal</th>
+      <th class='record-percent title'>カロリー</th>
+      <th class='record-percent title'>たんぱく質</th>
+      <th class='record-percent title'>脂質</th>
+      <th class='record-percent title'>炭水化物</th>
+      <th class='record-percent title'>カルシウム</th>
+      <th class='record-percent title'>鉄</th>
+      <th class='record-percent title'>ビタミンA</th>
+      <th class='record-percent title'>ビタミンB1</th>
+      <th class='record-percent title'>ビタミンB2</th>
+      <th class='record-percent title'>ビタミンC</th>
+      <th class='record-percent title'>ビタミンE</th>
+      <th class='record-percent title'>食物繊維</th>
+      <th class='record-percent title'>塩分</th>
     </tr>
   </thead>  
   <tbody class='text-center'>
@@ -49,11 +62,11 @@
           <td class='record-weight' ><%= weight.round(1) %> kg</td>
           <%# 前回比表示--------------------------------------------- %>
           <% if weight_last == 0 %>
-            <td class='record-weight' >---</td>
+            <td class='record-weight-last nil' >---</td>
           <% elsif (weight - weight_last) > 0 %>
-            <td class='record-weight' >+<%= (weight - weight_last).round(1) %> kg</td>
+            <td class='record-weight-last' >+<%= (weight - weight_last).round(1) %> kg</td>
           <% else %>
-            <td class='record-weight' ><%= (weight - weight_last).round(1) %> kg</td>
+            <td class='record-weight-last' ><%= (weight - weight_last).round(1) %> kg</td>
           <% end %>
           <%# BMI表示------------------------------------------------ %>
           <td class='record-weight' ><%= (weight / ((@user.height.to_f / 100) * (@user.height.to_f / 100).round(5))).round(2)  %></td>
@@ -70,12 +83,24 @@
         <%# binding.pry%>
         <%# 総カロリー------------------------------------------------ %>
         <% total_kcal = 0 %>
-        <%# 朝・昼・夕・その他カロリー------------------------------------ %>
+        <%# 朝・昼・夕・その他カロリー、栄養素---------------------------- %>
         <% meal_kcal = 0 %>
         <% fast_kcal = 0 %>
         <% lunch_kcal = 0 %>
         <% dinner_kcal = 0 %>
         <% other_kcal = 0 %>
+        <% meal_protein = 0 %>
+        <% meal_lipid = 0 %>
+        <% meal_carb = 0 %>
+        <% meal_calcium = 0 %>
+        <% meal_iron = 0 %>
+        <% meal_vitamin_a = 0 %>
+        <% meal_vitamin_b1 = 0 %>
+        <% meal_vitamin_b2 = 0 %>
+        <% meal_vitamin_c = 0 %>
+        <% meal_vitamin_e = 0 %>
+        <% meal_fiber = 0 %>
+        <% meal_salt = 0 %>
         <% @meals.each do |meal| %>
           <% if @standard_date.ago(i.days).to_date == meal.start_time.to_date %>
             <% if current_user.id == meal.user_id %>
@@ -89,6 +114,18 @@
               <% elsif meal.period == "その他" %>
                 <% other_kcal = other_kcal + meal.num * meal.food.kcal %>
               <% end %>
+              <% meal_protein    = meal_protein    + meal.num * meal.food.protein %>
+              <% meal_lipid      = meal_lipid      + meal.num * meal.food.lipid %>
+              <% meal_carb       = meal_carb       + meal.num * meal.food.carb %>
+              <% meal_calcium    = meal_calcium    + meal.num * meal.food.calcium %>
+              <% meal_iron       = meal_iron       + meal.num * meal.food.iron %>
+              <% meal_vitamin_a  = meal_vitamin_a  + meal.num * meal.food.vitamin_a %>
+              <% meal_vitamin_b1 = meal_vitamin_b1 + meal.num * meal.food.vitamin_b1 %>
+              <% meal_vitamin_b2 = meal_vitamin_b2 + meal.num * meal.food.vitamin_b2 %>
+              <% meal_vitamin_c  = meal_vitamin_c  + meal.num * meal.food.vitamin_c %>
+              <% meal_vitamin_e  = meal_vitamin_e  + meal.num * meal.food.vitamin_e %>
+              <% meal_fiber      = meal_fiber      + meal.num * meal.food.fiber %>
+              <% meal_salt       = meal_salt       + meal.num * meal.food.salt %>
             <% end %>
           <% end %>
         <% end %>
@@ -103,11 +140,11 @@
         <% end %>
         <%# 総合カロリー表示------------------------------------------------ %>
         <% if exercise_kcal == 0 or meal_kcal == 0 or sleep_kcal == 0 %>
-          <td class='record-kcal' >---</td>
+          <td class='record-total-kcal nil' >---</td>
         <% else %>
           <%# 総合計算---------------------------------------------------- %>
           <% total_kcal = total_kcal - metabo + meal_kcal - sleep_kcal - exercise_kcal %>
-          <td class='record-kcal'><%= total_kcal %> kcal</td>
+          <td class='record-total-kcal'><%= total_kcal %> kcal</td>
         <% end %>
         <%# 睡眠表示------------------------------------------------------- %>
         <% if weight == 0 %>
@@ -123,19 +160,50 @@
         <% end %>
         <%# 各カロリー表示-------------------------------------------------- %>
         <% if meal_kcal == 0 %>
+          <%# カロリー、栄養素----------------------------------------------- %>
           <td class='record-kcal' ></td>
           <td class='record-kcal' ></td>
           <td class='record-kcal' ></td>
           <td class='record-kcal' ></td>
           <td class='record-kcal' ></td>
+          <%# 栄養素------------------------------------------------------- %>
+          <td class='record-percent' ></td>
+          <td class='record-percent' ></td>
+          <td class='record-percent' ></td>
+          <td class='record-percent' ></td>
+          <td class='record-percent' ></td>
+          <td class='record-percent' ></td>
+          <td class='record-percent' ></td>
+          <td class='record-percent' ></td>
+          <td class='record-percent' ></td>
+          <td class='record-percent' ></td>
+          <td class='record-percent' ></td>
+          <td class='record-percent' ></td>
+          <td class='record-percent' ></td>
         <% else %>
+          <%# カロリー----------------------------------------------------- %>
           <td class='record-kcal'><%= meal_kcal %> kcal</td>
           <td class='record-kcal'><%= fast_kcal %> kcal</td>
           <td class='record-kcal'><%= lunch_kcal %> kcal</td>
           <td class='record-kcal'><%= dinner_kcal %> kcal</td>
           <td class='record-kcal'><%= other_kcal %> kcal</td>
+          <%# 栄養素------------------------------------------------------- %>
+          <td class='record-percent'><%= (meal_kcal.to_f       / @bases.all_records[0].kcal.to_f       * 100).round(0) %> ％</td>
+          <td class='record-percent'><%= (meal_protein.to_f    / @bases.all_records[0].protein.to_f    * 100).round(0) %> ％</td>
+          <td class='record-percent'><%= (meal_lipid.to_f      / @bases.all_records[0].lipid.to_f      * 100).round(0) %> ％</td>
+          <td class='record-percent'><%= (meal_carb.to_f       / @bases.all_records[0].carb.to_f       * 100).round(0) %> ％</td>
+          <td class='record-percent'><%= (meal_calcium.to_f    / @bases.all_records[0].calcium.to_f    * 100).round(0) %> ％</td>
+          <td class='record-percent'><%= (meal_iron.to_f       / @bases.all_records[0].iron.to_f       * 100).round(0) %> ％</td>
+          <td class='record-percent'><%= (meal_vitamin_a.to_f  / @bases.all_records[0].vitamin_a.to_f  * 100).round(0) %> ％</td>
+          <td class='record-percent'><%= (meal_vitamin_b1.to_f / @bases.all_records[0].vitamin_b1.to_f * 100).round(0) %> ％</td>
+          <td class='record-percent'><%= (meal_vitamin_b2.to_f / @bases.all_records[0].vitamin_b2.to_f * 100).round(0) %> ％</td>
+          <td class='record-percent'><%= (meal_vitamin_c.to_f  / @bases.all_records[0].vitamin_c.to_f  * 100).round(0) %> ％</td>
+          <td class='record-percent'><%= (meal_vitamin_e.to_f  / @bases.all_records[0].vitamin_e.to_f  * 100).round(0) %> ％</td>
+          <td class='record-percent'><%= (meal_fiber.to_f      / @bases.all_records[0].fiber.to_f      * 100).round(0) %> ％</td>
+          <td class='record-percent'><%= (meal_salt.to_f       / @bases.all_records[1].salt.to_f       * 100).round(0) %> ％</td>
         <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= render "shared/footer"%>

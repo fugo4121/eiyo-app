@@ -13,5 +13,6 @@ class RecordsController < ApplicationController
     @meals = Meal.all.includes(:food)
     @exercises = Exercise.all.includes(:training)
     @sleep_times = SleepTime.all
+    @bases = Base.all
   end
 end

@@ -50,7 +50,7 @@ def set_meal
 end
 
 def set_meals
-  @meals = Meal.search2(@params).includes(:food).order('start_time DESC').order('period DESC')
+  @meals = Meal.search2(@params).includes(:food).order('start_time DESC').order('period ASC')
 end
 
 def set_params

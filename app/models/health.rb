@@ -4,7 +4,7 @@ class Health < ApplicationRecord
   validate :date_after_start
 
   #睡眠時間は---が選択状態でないこと
-  with_options numericality: { other_than: 1, message: 'を選択してください' } do
+  with_options numericality: { other_than: 0, message: 'を選択してください' } do
     validates :sleep_time_id
   end
 
