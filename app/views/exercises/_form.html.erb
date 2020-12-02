@@ -71,7 +71,7 @@
   <%# --- 送信ボタン ----------------------------------------------------- %>
   <div class='register-btn'>
     <%# 新規登録か編集かにより、ボタン名称変更 %>
-    <% if request.path_info == new_exercise_path %>
+    <% if request.path_info == "/exercises/new" or request.path_info == "/exercises" %>
       <%= f.submit "記録する" ,class:"register-red-btn" %>
     <% else %>
       <%= f.submit "編集する" ,class:"register-red-btn" %>
