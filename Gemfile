@@ -101,3 +101,7 @@ gem 'bootstrap-sass', '3.4.1'
 gem 'jquery-rails'
 gem "jquery-ui-rails"
 gem 'font-awesome-sass'
+
+#グラフ
+gem "chartkick"
+gem 'groupdate'
