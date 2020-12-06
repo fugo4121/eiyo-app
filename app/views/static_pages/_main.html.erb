@@ -1,10 +1,257 @@
 <div class="main_page">
-  <div class="main_image">
+  <%# <div class="main_image">
     <div class="main_comment">
       <h1>健康管理システム</h1>
       <h2></h2>
     </div>
-  </div>
+  </div> %>
+
+
+  <% meal_kcal = 0 %>
+  <% other_kcal = 0 %>
+  <% meal_protein = 0 %>
+  <% meal_lipid = 0 %>
+  <% meal_carb = 0 %>
+  <% meal_calcium = 0 %>
+  <% meal_iron = 0 %>
+  <% meal_vitamin_a = 0 %>
+  <% meal_vitamin_b1 = 0 %>
+  <% meal_vitamin_b2 = 0 %>
+  <% meal_vitamin_c = 0 %>
+  <% meal_vitamin_e = 0 %>
+  <% meal_fiber = 0 %>
+  <% meal_salt = 0 %>
+
+  <% @meals.each do |meal| %>
+    <% meal_kcal       = meal_kcal       + meal.num * meal.food.kcal %>
+    <% meal_protein    = meal_protein    + meal.num * meal.food.protein %>
+    <% meal_lipid      = meal_lipid      + meal.num * meal.food.lipid %>
+    <% meal_carb       = meal_carb       + meal.num * meal.food.carb %>
+    <% meal_calcium    = meal_calcium    + meal.num * meal.food.calcium %>
+    <% meal_iron       = meal_iron       + meal.num * meal.food.iron %>
+    <% meal_vitamin_a  = meal_vitamin_a  + meal.num * meal.food.vitamin_a %>
+    <% meal_vitamin_b1 = meal_vitamin_b1 + meal.num * meal.food.vitamin_b1 %>
+    <% meal_vitamin_b2 = meal_vitamin_b2 + meal.num * meal.food.vitamin_b2 %>
+    <% meal_vitamin_c  = meal_vitamin_c  + meal.num * meal.food.vitamin_c %>
+    <% meal_vitamin_e  = meal_vitamin_e  + meal.num * meal.food.vitamin_e %>
+    <% meal_fiber      = meal_fiber      + meal.num * meal.food.fiber %>
+    <% meal_salt       = meal_salt       + meal.num * meal.food.salt %>
+  <% end %>
+
+  <% meal_kcal       = (meal_kcal.to_f       / @bases.all_records[0].kcal.to_f       * 100).round(0) %>
+  <% meal_protein    = (meal_protein.to_f    / @bases.all_records[0].protein.to_f    * 100).round(0) %>
+  <% meal_lipid      = (meal_lipid.to_f      / @bases.all_records[0].lipid.to_f      * 100).round(0) %>
+  <% meal_carb       = (meal_carb.to_f       / @bases.all_records[0].carb.to_f       * 100).round(0) %>
+  <% meal_calcium    = (meal_calcium.to_f    / @bases.all_records[0].calcium.to_f    * 100).round(0) %>
+  <% meal_iron       = (meal_iron.to_f       / @bases.all_records[0].iron.to_f       * 100).round(0) %>
+  <% meal_vitamin_a  = (meal_vitamin_a.to_f  / @bases.all_records[0].vitamin_a.to_f  * 100).round(0) %>
+  <% meal_vitamin_b1 = (meal_vitamin_b1.to_f / @bases.all_records[0].vitamin_b1.to_f * 100).round(0) %>
+  <% meal_vitamin_b2 = (meal_vitamin_b2.to_f / @bases.all_records[0].vitamin_b2.to_f * 100).round(0) %>
+  <% meal_vitamin_c  = (meal_vitamin_c.to_f  / @bases.all_records[0].vitamin_c.to_f  * 100).round(0) %>
+  <% meal_vitamin_e  = (meal_vitamin_e.to_f  / @bases.all_records[0].vitamin_e.to_f  * 100).round(0) %>
+  <% meal_fiber      = (meal_fiber.to_f      / @bases.all_records[0].fiber.to_f      * 100).round(0) %>
+  <% meal_salt       = (meal_salt.to_f       / @bases.all_records[0].salt.to_f       * 100).round(0) %>
+
+  <% meal_kcal_max       = (@bases.all_records[1].kcal.to_f       / @bases.all_records[0].kcal.to_f       * 100).round(0) %>
+  <% meal_protein_max    = (@bases.all_records[1].protein.to_f    / @bases.all_records[0].protein.to_f    * 100).round(0) %>
+  <% meal_lipid_max      = (@bases.all_records[1].lipid.to_f      / @bases.all_records[0].lipid.to_f      * 100).round(0) %>
+  <% meal_carb_max       = (@bases.all_records[1].carb.to_f       / @bases.all_records[0].carb.to_f       * 100).round(0) %>
+  <% meal_calcium_max    = (@bases.all_records[1].calcium.to_f    / @bases.all_records[0].calcium.to_f    * 100).round(0) %>
+  <% meal_iron_max       = (@bases.all_records[1].iron.to_f       / @bases.all_records[0].iron.to_f       * 100).round(0) %>
+  <% meal_vitamin_a_max  = (@bases.all_records[1].vitamin_a.to_f  / @bases.all_records[0].vitamin_a.to_f  * 100).round(0) %>
+  <% meal_vitamin_e_max  = (@bases.all_records[1].vitamin_e.to_f  / @bases.all_records[0].vitamin_e.to_f  * 100).round(0) %>
+  <% meal_salt_max       = (@bases.all_records[1].salt.to_f       / @bases.all_records[0].salt.to_f       * 100).round(0) %>
+
+
+
+  <%# レーダーチャート----------------------------------------------------- %>
+
+
+      <canvas id="myRaderChart" style="position: relative; height:100; width:150"></canvas>
+
+
+      <!-- CDN -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+
+      <script>
+        const name       = <%== JSON.dump(@user.name) %>;
+
+        const kcal       = <%== JSON.dump(meal_kcal) %>;
+        const protein    = <%== JSON.dump(meal_protein) %>;
+        const lipid      = <%== JSON.dump(meal_lipid) %>;
+        const carb       = <%== JSON.dump(meal_carb) %>;
+        const calcium    = <%== JSON.dump(meal_calcium) %>;
+        const iron       = <%== JSON.dump(meal_iron) %>;
+        const vitamin_a  = <%== JSON.dump(meal_vitamin_a) %>;
+        const vitamin_b1 = <%== JSON.dump(meal_vitamin_b1) %>;
+        const vitamin_b2 = <%== JSON.dump(meal_vitamin_b2) %>;
+        const vitamin_c  = <%== JSON.dump(meal_vitamin_c) %>;
+        const vitamin_e  = <%== JSON.dump(meal_vitamin_e) %>;
+        const fiber      = <%== JSON.dump(meal_fiber) %>;
+        const salt       = <%== JSON.dump(meal_salt) %>;
+
+        const kcal_max    = <%== JSON.dump(meal_kcal_max) %>;
+        const protein_max = <%== JSON.dump(meal_protein_max) %>;
+        const lipid_max   = <%== JSON.dump(meal_lipid_max) %>;
+        const carb_max    = <%== JSON.dump(meal_carb_max) %>;
+        const salt_max    = <%== JSON.dump(meal_salt_max) %>;
+      </script>
+
+      <script>
+        var ctx = document.getElementById("myRaderChart");
+        ctx.height = 100;
+
+        var myRadarChart = new Chart(ctx, {
+            type: 'radar', 
+            data: { 
+                labels: ["カロリー", "たんぱく質", "脂質", "炭水化物", "カルシウム", "鉄", "ビタミンA", "ビタミンB1", "ビタミンB2", "ビタミンC", "ビタミンE", "食物繊維", "塩分"],
+                datasets: [{
+                    label: name,
+                    data: [kcal, protein, lipid, carb, calcium, iron, vitamin_a, vitamin_b1, vitamin_b2, vitamin_c, vitamin_e, fiber, salt],
+                    backgroundColor: 'RGBA(225,95,150, 0.5)',
+                    borderColor: 'RGBA(225,95,150, 1)',
+                    borderWidth: 1,
+                    pointBackgroundColor: 'RGB(46,106,177)'
+                }, {
+                    label: '必要値',
+                    data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+                    backgroundColor: 'RGBA(115,255,25, 0.5)',
+                    borderColor: 'RGBA(115,255,25, 1)',
+                    borderWidth: 1,
+                    pointBackgroundColor: 'RGB(46,106,177)'
+                }, {
+                    // 限界値がないもの(通常超えないもの)は200として設定
+                    label: '限界値',
+                    data: [kcal_max, protein_max, lipid_max, carb_max, 200, 200, 200, 200, 200, 200, 200, 200, salt_max],
+                    backgroundColor: 'RGBA(105,55,225, 0.5)',
+                    borderColor: 'RGBA(115,255,25, 1)',
+                    borderWidth: 1,
+                    pointBackgroundColor: 'RGB(46,106,177)'
+                    
+                }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: '本日の栄養素'
+                },
+                scale:{
+                    ticks:{
+                        suggestedMin: 0,
+                        suggestedMax: 200,
+                        stepSize: 20,
+                        callback: function(value, index, values){
+                            return  value +  '％'
+                        }
+                    }
+                }
+            }
+        });
+      </script>
+
+
+
+
+
+
+  <%# 体重グラフ-------------------------------------------------------------- %>
+
+  <div id="chartdiv"></div>
+
+  <!-- Styles -->
+  <style>
+  #chartdiv {
+    width: 100%;
+    height: 500px;
+  }
+  </style>
+
+  <!-- Resources -->
+  <script src="https://www.amcharts.com/lib/4/core.js"></script>
+  <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/kelly.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+  <!-- Chart code -->
+  <script>
+  am4core.ready(function() {
+
+  // Themes begin
+  am4core.useTheme(am4themes_kelly);
+  am4core.useTheme(am4themes_animated);
+  // Themes end
+
+  // Create chart instance
+  var chart = am4core.create("chartdiv", am4charts.XYChart);
+
+  //JSON形式で値を渡す
+  const weights = <%== JSON.dump(@weights) %>;
+  const dates = <%== JSON.dump(@dates) %>;
+  //表示期間を計算
+  var firstDate = new Date(dates[0])
+  var lastDate = new Date(dates.slice(-1)[0])
+  var termDate= (lastDate - firstDate)/ 1000 / 60 / 60 / 24 + 1
+
+  // Add data
+  chart.data = generateChartData();
+
+  // Create axes
+  var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+  // x軸の日付フォーマット変更
+  dateAxis.dateFormats.setKey("day", "yyyy/M/d");
+  dateAxis.periodChangeDateFormats.setKey("day", "yyyy/M/d"); 
+  dateAxis.renderer.minGridDistance = 50;
+  
+  var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+
+  // Create series
+  var series = chart.series.push(new am4charts.LineSeries());
+  series.dataFields.valueY = "weight";
+  series.dataFields.dateX = "date";
+  series.strokeWidth = 2;
+  series.minBulletDistance = 10;
+  series.tooltipText = "{valueY}";
+  series.tooltip.pointerOrientation = "vertical";
+  series.tooltip.background.cornerRadius = 20;
+  series.tooltip.background.fillOpacity = 0.5;
+  series.tooltip.label.padding(12,12,12,12)
+
+  // Add scrollbar
+  chart.scrollbarX = new am4charts.XYChartScrollbar();
+  chart.scrollbarX.series.push(series);
+
+  // Add cursor
+  chart.cursor = new am4charts.XYCursor();
+  chart.cursor.xAxis = dateAxis;
+  chart.cursor.snapToSeries = series;
+
+  //不連続な間隔(日付)で投稿された値を表示する
+  function generateChartData() {
+    var chartData = [];
+    for (var j =0; j< weights.length; j++){
+      for (var i = 0; i < termDate; i++) {
+        var newDate = new Date(firstDate)
+        newDate.setDate(newDate.getDate() + i); //初日からi日分たす
+        if ((new Date(dates[j])) - (newDate)==0){
+          weight =weights[j]
+          chartData.push({
+              date: newDate,
+              weight: weight
+          });
+        }
+      }
+    }
+    return chartData;
+  }
+
+  }); // end am4core.ready()
+  </script>
+
+
+
+
+
+
   <div id="flex_link">
     <div class="flex-item"><%= link_to "体調管理", new_health_path, class: "btn btn-success" %></div>
     <div class="flex-item"><%= link_to "食事管理", new_meal_path, class: "btn btn-success" %></div>
